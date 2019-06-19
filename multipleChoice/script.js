@@ -45,4 +45,6 @@ recognition.onerror = function(event) {
     message.textContent = 'Error occurred in recognition: ' + event.error;
 }
 
-recognition.start();
+window.onload = (event) => {
+    recognition.start();
+};
