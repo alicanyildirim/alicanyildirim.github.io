@@ -39,7 +39,7 @@ recognition.onresult = function(event) {
   recognition.start();
 };
 recognition.onspeechend = function() {
-    recognition.stop();
+    recognition.start();
 };
 recognition.onerror = function(event) {
     message.textContent = 'Error occurred in recognition: ' + event.error;
