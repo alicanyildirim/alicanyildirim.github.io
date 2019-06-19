@@ -1,4 +1,5 @@
 var message = document.querySelector('#message');
+var record = document.querySelector('#record');
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var grammar = '#JSGF V1.0;'
@@ -9,28 +10,24 @@ recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.onresult = function(event) {
-    var last = event.results.length - 1;
+    var last = event.results.length -1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
-    if(command.toLowerCase() === 'select steve'){
-        document.querySelector('#chkSteve').checked = true;
+    if(command === "Select Male")
+    {
+        document.querySelector('#male').checked = true;
     }
-    else if (command.toLowerCase() === 'select tony'){
-        document.querySelector('#chkTony').checked = true;
+    else if(command === "Select Female")
+    {
+        document.querySelector('#female').checked = true;
     }
-    else if (command.toLowerCase() === 'select bruce'){
-        document.querySelector('#chkBruce').checked = true;
-    }
-    else if (command.toLowerCase() === 'select nick'){
-        document.querySelector('#chkNick').checked = true;
+    else if (command === "Select Other")
+    {
+        document.querySelector('#other').checked = true;
     }
 };
-recognition.onspeechend = function() {
-    recognition.stop();
-};
-recognition.onerror = function(event) {
-    message.textContent = 'Error occurred in recognition: ' + event.error;
-}
-document.querySelector('#btnGiveCommand').addEventListener('click', function(){
-    recognition.start();
-});
+
+recognition.onspeechend = () => recognition.stop();
+recognition.onerror = (event) =>
+    message.textContent = "Error occurred in recognition: " + event.error;
+record.addEventListener('click', () => recognition.start());
