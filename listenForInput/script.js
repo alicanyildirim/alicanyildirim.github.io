@@ -2,7 +2,7 @@ if(!window.webkitSpeechRecognition){
       log('Sorry this will work only in Chrome for now...');
 }
 const magic_word = 'hello';
-
+var times = 0;
 let recognition = new webkitSpeechRecognition();
 recognition.lang = 'en-US';
 recognition.interimResults = false;
@@ -10,25 +10,28 @@ recognition.maxAlternatives = 1;
 recognition.continuous = true;
 
 recognition.onresult = e => {
-        var transcripts  = [].concat.apply([], [...e.results].map(res => [...res].map(alt => alt.transcript)));
-      if(transcripts.some(t=>t.indexOf(magic_word)>-1)){
-                log('!!!do something awesome!!!');
-            }
-      else{
-              log('understood ' + JSON.stringify(transcripts));
-            }
+    var transcripts  = [].concat.apply([], [...e.results].map(res => [...res].map(alt => alt.transcript)));
+    if(transcripts.some(t=>t.indexOf(magic_word)>-1)){
+        log('!!!do something awesome!!!');
+        times++;
+        awesome.textContent = 'I heard you say Hello ' + times + ' times.';
+    }
+    else{
+        log('understood ' + JSON.stringify(transcripts));
+    }
 }
 function stopSpeech(){
-        recognition.stop();
-      status_.className = 'inactive';
+    recognition.stop();
+    status_.className = 'inactive';
 }
 function startSpeech(){
-        try{
-                  recognition.start();
-              }
-      catch(e){}
-      status_.className = 'active';
+    try{
+        recognition.start();
+    }
+    catch(e){}
+    status_.className = 'active';
 }
+
 navigator.mediaDevices.getUserMedia({audio:true})
 .then(stream => detectSilence(stream, stopSpeech, startSpeech))
 .catch(e => log(e.message));
