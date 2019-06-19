@@ -1,4 +1,5 @@
 var message = document.querySelector('#message');
+var confidence = document.querySelector('#confidence');
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var grammar = '#JSGF V1.0;'
@@ -12,6 +13,7 @@ recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
+    confidence.textContent = 'Confidence: ' + event.results[0][0].confidence;
     if(command.toLowerCase() === 'select steve'){
         document.querySelector('#chkSteve').checked = true;
     }
