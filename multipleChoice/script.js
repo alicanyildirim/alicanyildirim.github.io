@@ -13,7 +13,8 @@ recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
-    confidence.textContent = 'Confidence: %' + event.results[0][0].confidence * 100;
+    var confidencePercent = event.results[0][0].confidence * 100;
+    confidence.textContent = 'Confidence: %' + confidencePercent;
     if(command.toLowerCase() === 'select steve'){
         document.querySelector('#chkSteve').checked = true;
     }
