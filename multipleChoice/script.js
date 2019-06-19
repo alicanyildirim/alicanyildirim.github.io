@@ -36,6 +36,7 @@ recognition.onresult = function(event) {
     else if (command.toLowerCase() === 'deselect nick'){
         document.querySelector('#chkNick').checked = false;
     }
+  recognition.start();
 };
 recognition.onspeechend = function() {
     recognition.stop();
