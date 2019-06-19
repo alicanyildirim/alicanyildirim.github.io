@@ -1,7 +1,7 @@
 if(!window.webkitSpeechRecognition){
       log('Sorry this will work only in Chrome for now...');
 }
-const magic_word = 'hello';
+const magic_word = 'Hello';
 var times = 0;
 let recognition = new webkitSpeechRecognition();
 recognition.lang = 'en-US';
