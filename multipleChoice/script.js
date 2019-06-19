@@ -8,12 +8,13 @@ var speechRecognitionList = new SpeechGrammarList();
 speechRecognitionList.addFromString(grammar, 1);
 recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
+recognition.continuous = true;
 recognition.interimResults = true;
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
-    var confidencePercent = event.results[0][0].confidence * 100;
+    var confidencePercent = (event.results[0][0].confidence * 100).toFixed(2);
     confidence.textContent = 'Confidence: %' + confidencePercent;
     if(command.toLowerCase() === 'select steve'){
         document.querySelector('#chkSteve').checked = true;
@@ -52,6 +53,7 @@ document.querySelector('#btnGiveCommand').addEventListener('click', function(){
     recognition.start();
 });
 
+recognition.start();
 window.onload = (event) => {
     recognition.start();
 };
