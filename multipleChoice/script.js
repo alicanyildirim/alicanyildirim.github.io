@@ -24,6 +24,18 @@ recognition.onresult = function(event) {
     else if (command.toLowerCase() === 'select nick'){
         document.querySelector('#chkNick').checked = true;
     }
+    else if(command.toLowerCase() === 'deselect steve'){
+        document.querySelector('#chkSteve').checked = false;
+    }
+    else if (command.toLowerCase() === 'deselect tony'){
+        document.querySelector('#chkTony').checked = false;
+    }
+    else if (command.toLowerCase() === 'deselect bruce'){
+        document.querySelector('#chkBruce').checked = false;
+    }
+    else if (command.toLowerCase() === 'deselect nick'){
+        document.querySelector('#chkNick').checked = false;
+    }
 };
 recognition.onspeechend = function() {
     recognition.stop();
