@@ -25,6 +25,7 @@ recognition.onresult = function(event) {
     {
         document.querySelector('#other').checked = true;
     }
+    recognition.start();
 };
 
 recognition.onspeechend = () => recognition.stop();
