@@ -5,6 +5,7 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var grammar = '#JSGF V1.0;'
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
+var confidencePercent;
 speechRecognitionList.addFromString(grammar, 1);
 recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
@@ -14,7 +15,7 @@ recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
-    var confidencePercent = (event.results[0][0].confidence * 100);
+    confidencePercent = (event.results[0][0].confidence * 100);
     confidence.textContent = 'Confidence: %' + confidencePercent.toFixed(2);
     if(command.toLowerCase() === 'select steve'){
         document.querySelector('#chkSteve').checked = true;
