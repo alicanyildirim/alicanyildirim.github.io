@@ -13,15 +13,15 @@ recognition.onresult = function(event) {
     var last = event.results.length -1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
-    if(command === "Select Male")
+    if(command.toLowerCase() === "select male")
     {
         document.querySelector('#male').checked = true;
     }
-    else if(command === "Select Female")
+    else if(command.toLowerCase() === "select female")
     {
         document.querySelector('#female').checked = true;
     }
-    else if (command === "Select Other")
+    else if (command.toLowerCase() === "select other")
     {
         document.querySelector('#other').checked = true;
     }
