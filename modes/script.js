@@ -71,6 +71,7 @@ function inputMode(command)
     else
     {
         var focus = document.activeElement;
+        console.log(focus);
         focus.value=command;
         //get the element that has focus
         //the input will be given to that element.
