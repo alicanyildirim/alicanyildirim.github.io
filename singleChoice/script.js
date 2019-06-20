@@ -13,7 +13,7 @@ recognition.onresult = function(event) {
     var last = event.results.length -1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
-    if(command.toLowerCase() === "select male")
+    if(command.toLowerCase() === "select male" || command.toLowerCase() === "select mail")
     {
         document.querySelector('#male').checked = true;
     }
@@ -28,7 +28,8 @@ recognition.onresult = function(event) {
     recognition.start();
 };
 
-recognition.onspeechend = () => recognition.stop();
+recognition.onspeechend = () => recognition.start();
 recognition.onerror = (event) =>
     message.textContent = "Error occurred in recognition: " + event.error;
 record.addEventListener('click', () => recognition.start());
+
