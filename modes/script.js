@@ -18,7 +18,7 @@ recognition.onresult = function(event) {
     message.textContent = 'Voice Input: ' + command + '.';
     confidencePercent = (event.results[0][0].confidence * 100);
     confidence.textContent = 'Confidence: %' + confidencePercent.toFixed(2);
-    inputMode();
+    inputMode(command);
   recognition.start();
 };
 function navigationMode(command)
