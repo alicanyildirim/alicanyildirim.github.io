@@ -16,9 +16,24 @@ recognition.onresult = function(event) {
     var command = event.results[last][0].transcript;
     command = command.toLowerCase();
     message.textContent = 'Voice Input: ' + command + '.';
-    confidencePercent = (event.results[0][0].confidence * 100);
-    confidence.textContent = 'Confidence: %' + confidencePercent.toFixed(2);
-    inputMode(command);
+    if (command === 'enter navigation mode')
+    {
+        last = event.results.length - 1;
+        command = event.results[last][0].transcript;
+        command = command.toLowerCase();
+        message.textContent = 'Voice Input: ' + command + '.';
+        //generate new command
+        navigationMode(command);
+    }
+    else if (command === 'enter input mode')
+    {
+        last = event.results.length - 1;
+        command = event.results[last][0].transcript;
+        command = command.toLowerCase();
+        message.textContent = 'Voice Input: ' + command + '.';
+        //generate new command
+        inputMode(command);
+    }
   recognition.start();
 };
 function navigationMode(command)
@@ -33,6 +48,12 @@ function navigationMode(command)
     }
     else if (command === 'enter input mode')
     {
+        last = event.results.length - 1;
+        command = event.results[last][0].transcript;
+        command = command.toLowerCase();
+        message.textContent = 'Voice Input: ' + command + '.';
+        inputMode(command);
+
         // change the mode to the input mode.
         // by focusing on the form
     }
@@ -42,6 +63,12 @@ function inputMode(command)
     if(command === 'enter navitagiton mode')
     {
         //change the mode to the navigation mode
+        //generate a new command
+        last = event.results.length - 1;
+        command = event.results[last][0].transcript;
+        command = command.toLowerCase();
+        message.textContent = 'Voice Input: ' + command + '.';
+        navigationMode(command);
 
     }
     else if (command === 'select steve'){
@@ -71,7 +98,6 @@ function inputMode(command)
     else
     {
         var focus = document.activeElement;
-        console.log(focus);
         focus.value=command;
         //get the element that has focus
         //the input will be given to that element.
