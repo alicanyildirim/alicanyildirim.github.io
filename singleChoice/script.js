@@ -29,7 +29,8 @@ recognition.onresult = function(event) {
     recognition.start();
 };
 
-recognition.onspeechend = () => recognition.start();
+recognition.onspeechend = () => recognition.stop();
+recognition.onend = () => recognition.start();
 recognition.onerror = (event) =>
     message.textContent = "Error occurred in recognition: " + event.error;
 record.addEventListener('click', () => recognition.start());
