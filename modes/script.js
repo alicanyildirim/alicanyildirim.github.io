@@ -5,12 +5,13 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var grammar = '#JSGF V1.0;'
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
-var confidencePercent;
+var isModeNavigation = 0;
 speechRecognitionList.addFromString(grammar, 1);
 recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
 recognition.continuous = true;
 recognition.interimResults = true;
+getInputFields();
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
@@ -18,24 +19,27 @@ recognition.onresult = function(event) {
     message.textContent = 'Voice Input: ' + command + '.';
     if (command === 'enter navigation mode')
     {
-        last = event.results.length - 1;
-        command = event.results[last][0].transcript;
-        command = command.toLowerCase();
-        message.textContent = 'Voice Input: ' + command + '.';
-        //generate new command
-        navigationMode(command);
+        isModeNavigation = 1;
     }
     else if (command === 'enter input mode')
     {
-        last = event.results.length - 1;
-        command = event.results[last][0].transcript;
-        command = command.toLowerCase();
-        message.textContent = 'Voice Input: ' + command + '.';
-        //generate new command
+        isModeNavigation = 0;
         inputMode(command);
     }
   recognition.start();
 };
+// using the tag name get the id and name of the all the input fields
+function getInputFields()
+{
+    var form = document.getElementsByTagName("FORM")[0];
+    console.log(form.getElementsByTagName("INPUT")[0]);
+
+}
+function setFocus() {
+    var form = document.getElementsByTagName("FORM")[0];
+    var first = form.getElementsByTagName("INPUT")[0];
+    first.focus();
+}
 function navigationMode(command)
 {
     if(command === 'next')
