@@ -14,7 +14,7 @@ recognition.onresult = function(event) {
     var last = event.results.length -1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
-    array.textContent = 'A:  ' + command;
+    array.textContent = 'A:  ' + command[0] + '   ' + command[1];
     if(command.toLowerCase() === "select male" || command.toLowerCase() === "select mail")
     {
         document.querySelector('#male').checked = true;
