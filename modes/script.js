@@ -23,15 +23,16 @@ recognition.onresult = function(event) {
     if (command === 'enter navigation mode')
     {
         isModeNavigation = 1;
-        mode.textContent = "Input Mode";
+        mode.textContent = "Navigation Mode";
     }
     else if (command === 'enter input mode')
     {
         isModeNavigation = 0;
-        mode.textContent = "Navigation Mode";
+        mode.textContent = "Input Mode";
     }
     else
     {
+        // if user is in the input mode
         if(isModeNavigation === 0)
         {
             if (focusedField === 0 && (command !== 'next field' || command !== 'previous field'))
@@ -45,6 +46,7 @@ recognition.onresult = function(event) {
             }
 
         }
+        //if user is in the navigation mode
         else if(isModeNavigation === 1)
         {
             if(command === 'next' ) {
@@ -78,6 +80,7 @@ function initialFocus(inputFields)
     inputFields[0].focus();
 }
 function setFocus(inputFields,focusedField,command) {
+    inputFields[1].focus();
     if(command === 'next field')
     {
         if(!(inputFields.length === focusedField+1))
