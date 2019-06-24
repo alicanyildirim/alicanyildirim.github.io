@@ -41,7 +41,7 @@ recognition.onresult = function(event) {
             }
             else if (command === 'next field' || command === 'previous field')
             {
-                setFocus(inputFields,focusedField,command);
+                inputFields[1].focus();
 
             }
 
@@ -80,7 +80,6 @@ function initialFocus(inputFields)
     inputFields[0].focus();
 }
 function setFocus(inputFields,focusedField,command) {
-    inputFields[1].focus();
     if(command === 'next field')
     {
         if(!(inputFields.length === focusedField+1))
