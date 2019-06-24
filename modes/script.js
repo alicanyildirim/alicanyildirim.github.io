@@ -23,16 +23,17 @@ recognition.onresult = function(event) {
     if (command === 'enter navigation mode')
     {
         isModeNavigation = 1;
+        mode.textContent = "Input Mode";
     }
     else if (command === 'enter input mode')
     {
         isModeNavigation = 0;
+        mode.textContent = "Navigation Mode";
     }
     else
     {
         if(isModeNavigation === 0)
         {
-            mode.textContent = "Input Mode";
             if (focusedField === 0 && (command !== 'next field' || command !== 'previous field'))
             {
                 initialFocus(inputFields);
@@ -46,7 +47,12 @@ recognition.onresult = function(event) {
         }
         else if(isModeNavigation === 1)
         {
-            mode.textContent = "Navigation Mode";
+            if(command === 'next' ) {
+                document.querySelector('.next').click();
+            }
+            else if(command === 'previous') {
+                document.querySelector('.previous').click();
+            }
         }
 
     }
