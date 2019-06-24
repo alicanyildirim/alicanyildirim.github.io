@@ -15,8 +15,6 @@ recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
     message.textContent = 'Voice Input: ' + command + '.';
-    confidencePercent = (event.results[0][0].confidence * 100);
-    confidence.textContent = 'Confidence: %' + confidencePercent.toFixed(2);
     if(command.toLowerCase() === 'next' ) {
         document.querySelector('.next').click();
     }

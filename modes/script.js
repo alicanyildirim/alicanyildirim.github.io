@@ -11,12 +11,15 @@ recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
 recognition.continuous = true;
 recognition.interimResults = true;
-getInputFields();
+var focusedField = 0;
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
     command = command.toLowerCase();
+    //extracting words
+    var words = command.match(/("[^"]+"|[^"\s]+)/g);
     message.textContent = 'Voice Input: ' + command + '.';
+    var inputFields = getInputFields();
     if (command === 'enter navigation mode')
     {
         isModeNavigation = 1;
@@ -24,7 +27,28 @@ recognition.onresult = function(event) {
     else if (command === 'enter input mode')
     {
         isModeNavigation = 0;
-        inputMode(command);
+    }
+    else
+    {
+        if(isModeNavigation === 0)
+        {
+            mode.textContent = "Input Mode";
+            if (focusedField === 0 && (command !== 'next field' || command !== 'previous field'))
+            {
+                initialFocus(inputFields);
+            }
+            else if (command === 'next field' || command === 'previous field')
+            {
+                setFocus(inputFields,focusedField,command);
+
+            }
+
+        }
+        else if(isModeNavigation === 1)
+        {
+            mode.textContent = "Navigation Mode";
+        }
+
     }
   recognition.start();
 };
@@ -32,13 +56,40 @@ recognition.onresult = function(event) {
 function getInputFields()
 {
     var form = document.getElementsByTagName("FORM")[0];
-    console.log(form.getElementsByTagName("INPUT")[0]);
+    var inputFields = [];
+    for (var i = 0; i < form.length; i++)
+    {
+       inputFields.push(form[i]);
+    }
+    return inputFields;
 
 }
-function setFocus() {
-    var form = document.getElementsByTagName("FORM")[0];
-    var first = form.getElementsByTagName("INPUT")[0];
-    first.focus();
+// use this function to focus on fields.
+// first field must be focused on load.
+// this only matters in input mode.
+function initialFocus(inputFields)
+{
+    inputFields[0].focus();
+}
+function setFocus(inputFields,focusedField,command) {
+    if(command === 'next field')
+    {
+        if(!(inputFields.length === focusedField+1))
+        {
+            focusedField++;
+            inputFields[focusedField].focus();
+        }
+
+    }
+    else if(command === 'previous field')
+    {
+        if(focusedField !== 0)
+        {
+            focusedField--;
+            inputFields[focusedField].focus();
+        }
+
+    }
 }
 function navigationMode(command)
 {
@@ -52,11 +103,6 @@ function navigationMode(command)
     }
     else if (command === 'enter input mode')
     {
-        last = event.results.length - 1;
-        command = event.results[last][0].transcript;
-        command = command.toLowerCase();
-        message.textContent = 'Voice Input: ' + command + '.';
-        inputMode(command);
 
         // change the mode to the input mode.
         // by focusing on the form
