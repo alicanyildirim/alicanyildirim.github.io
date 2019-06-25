@@ -41,8 +41,8 @@ recognition.onresult = function(event) {
             }
             else if (command === 'next field' || command === 'previous field')
             {
-                inputFields[1].focus();
-
+                //inputFields[1].focus();
+                setFocus(inputFields,focusedField,command);
             }
 
         }
