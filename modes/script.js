@@ -44,7 +44,7 @@ recognition.onresult = function(event) {
 
                 modes.textContent = "Why are you not running?";
                 //inputFields[1].focus();
-                (function setFocus(inputFields,focusedField,command) {
+                {
                     if(command === 'next field')
                     {
                         modes.textContent = "Inside Upper";
@@ -69,7 +69,7 @@ recognition.onresult = function(event) {
                         }
 
                     }
-                })();
+                }
                 //setFocus(inputFields,focusedField,command);
             }
             else
