@@ -72,6 +72,10 @@ recognition.onresult = function(event) {
                 })();
                 //setFocus(inputFields,focusedField,command);
             }
+            else
+            {
+                modes.textContent = "You gonna do me like that?!";
+            }
 
         }
         //if user is in the navigation mode
