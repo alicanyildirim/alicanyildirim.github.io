@@ -48,7 +48,9 @@ recognition.onresult = function(event) {
                         if(!(inputFields.length === focusedField+1))
                         {
                             focusedField++;
-                            inputFields[focusedField].focus();
+                            window.setTimeout(() => {
+                                    inputFields[focusedField].focus();
+                            }, 0);
                         }
 
                     }
@@ -57,7 +59,9 @@ recognition.onresult = function(event) {
                         if(focusedField !== 0)
                         {
                             focusedField--;
-                            inputFields[focusedField].focus();
+                            window.setTimeout(() => {
+                                    inputFields[focusedField].focus();
+                            }, 0);
                         }
 
                     }
