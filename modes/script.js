@@ -41,6 +41,8 @@ recognition.onresult = function(event) {
             }
             else if (command === 'next field' || command === 'previous field')
             {
+
+                modes.textContent = "Why are you not running?";
                 //inputFields[1].focus();
                 (function setFocus(inputFields,focusedField,command) {
                     if(command === 'next field')
