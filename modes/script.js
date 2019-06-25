@@ -42,7 +42,27 @@ recognition.onresult = function(event) {
             else if (command === 'next field' || command === 'previous field')
             {
                 //inputFields[1].focus();
-                setFocus(inputFields,focusedField,command);
+                (function setFocus(inputFields,focusedField,command) {
+                    if(command === 'next field')
+                    {
+                        if(!(inputFields.length === focusedField+1))
+                        {
+                            focusedField++;
+                            inputFields[focusedField].focus();
+                        }
+
+                    }
+                    else if(command === 'previous field')
+                    {
+                        if(focusedField !== 0)
+                        {
+                            focusedField--;
+                            inputFields[focusedField].focus();
+                        }
+
+                    }
+                })();
+                //setFocus(inputFields,focusedField,command);
             }
 
         }
@@ -78,26 +98,6 @@ function getInputFields()
 function initialFocus(inputFields)
 {
     inputFields[0].focus();
-}
-function setFocus(inputFields,focusedField,command) {
-    if(command === 'next field')
-    {
-        if(!(inputFields.length === focusedField+1))
-        {
-            focusedField++;
-            inputFields[focusedField].focus();
-        }
-
-    }
-    else if(command === 'previous field')
-    {
-        if(focusedField !== 0)
-        {
-            focusedField--;
-            inputFields[focusedField].focus();
-        }
-
-    }
 }
 function navigationMode(command)
 {
