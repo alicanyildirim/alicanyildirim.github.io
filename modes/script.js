@@ -49,7 +49,7 @@ recognition.onresult = function(event) {
                         {
                             focusedField++;
                             window.setTimeout(() => {
-                                    inputFields[focusedField].focus();
+                                    document.getElementById(inputFields[focusedField].id).focus();
                             }, 0);
                         }
 
