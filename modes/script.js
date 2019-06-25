@@ -39,7 +39,7 @@ recognition.onresult = function(event) {
         {
             if (focusedField === 0 && (command !== 'next field' || command !== 'previous field'))
             {
-                initialFocus(inputFields);
+                inputFields[0].focus();
             }
             else if (command === 'next field' || command === 'previous field')
             {
@@ -110,10 +110,8 @@ function getInputFields()
 // use this function to focus on fields.
 // first field must be focused on load.
 // this only matters in input mode.
-function initialFocus(inputFields)
-{
-    inputFields[0].focus();
-}
+
+
 function navigationMode(command)
 {
     if(command === 'next')
