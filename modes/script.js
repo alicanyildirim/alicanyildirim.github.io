@@ -10,7 +10,7 @@ speechRecognitionList.addFromString(grammar, 1);
 recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
 recognition.continuous = true;
-recognition.interimResults = true;
+recognition.interimResults = false;
 var focusedField = 0;
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
