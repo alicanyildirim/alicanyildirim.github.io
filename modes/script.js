@@ -50,6 +50,7 @@ recognition.onresult = function(event) {
                             focusedField++;
                             window.setTimeout(() => {
                                     document.getElementById(inputFields[focusedField].id).focus();
+                                    modes.textContent = "I am here!";
                             }, 0);
                         }
 
