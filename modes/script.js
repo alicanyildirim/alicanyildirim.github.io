@@ -12,6 +12,7 @@ recognition.lang = 'en-US';
 recognition.continuous = true;
 recognition.interimResults = false;
 var focusedField = 0;
+console.log(focusedField);
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var command = event.results[last][0].transcript;
@@ -20,6 +21,7 @@ recognition.onresult = function(event) {
     var words = command.match(/("[^"]+"|[^"\s]+)/g);
     message.textContent = 'Voice Input: ' + command + '.';
     var inputFields = getInputFields();
+    console.log("Hello "+focusedField);
     if (command === 'enter navigation mode')
     {
         isModeNavigation = 1;
@@ -41,6 +43,7 @@ recognition.onresult = function(event) {
             }
             else if (command === 'next field' || command === 'previous field')
             {
+
 
                 modes.textContent = "Why are you not running?";
                 //inputFields[1].focus();
