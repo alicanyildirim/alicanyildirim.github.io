@@ -23,12 +23,12 @@ recognition.onresult = function(event) {
     if (command === 'enter navigation mode')
     {
         isModeNavigation = 1;
-        mode.textContent = "Navigation Mode";
+        modes.textContent = "Navigation Mode";
     }
     else if (command === 'enter input mode')
     {
         isModeNavigation = 0;
-        mode.textContent = "Input Mode";
+        modes.textContent = "Input Mode";
     }
     else
     {
