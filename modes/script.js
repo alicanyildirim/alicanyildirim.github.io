@@ -40,6 +40,8 @@ recognition.onresult = function(event) {
             if ( focused === 0 && command !== 'next field' && command !== 'previous field')
             {
                 //add a function to detect the input type so that operation to be performed could be selected
+                inputFields[focusedField].focus();
+                inputFields[focusedField].value = command;
                 focusedField++;
 
                 focused = 1;
@@ -91,17 +93,13 @@ recognition.onresult = function(event) {
                             }
                         }
                         break;
-                    case 'text':
-                        inputFields[focusedField].focus();
-                        inputFields[focusedField].value = command;
-                        break;
                     default:
                 }
 
 
             }
             // if the next field, previous field, or clear field commands are called this block will run
-            else if (command === 'next field' || command === 'previous field' || command === 'clear field')
+            else if (command === 'next field' || command === 'previous field' || command === 'clearfield')
             {
                 // need this focused flag because it enters the above block two times otherwise.
                 focused = 0;
@@ -124,7 +122,7 @@ recognition.onresult = function(event) {
                         }
 
                     }
-                    else if(command === 'clear field')
+                    else if(command === 'clearfield')
                     {
                         inputFields[focusedField].value = "";
                     }
