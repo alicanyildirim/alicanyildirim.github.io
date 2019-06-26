@@ -59,6 +59,7 @@ recognition.onresult = function(event) {
                             {
                                 if ( word[1] === inputFields[i].value)
                                 {
+                                    modes.textContent = inputFields[i].value;
                                     inputFields[i].checked = true;
                                 }
                             }
