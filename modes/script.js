@@ -41,6 +41,7 @@ recognition.onresult = function(event) {
             {
                 //add a function to detect the input type so that operation to be performed could be selected
                 inputFields[focusedField].value = command;
+i               modes.textContent += "  Hello   ";
                 focusedField++;
                 // need to erase the command, otherwise it fills the other field too.
                 command = "";
@@ -90,6 +91,7 @@ recognition.onresult = function(event) {
 // using the tag name get the id and name of the all the input fields
 function getInputFields()
 {
+    //assuming the form is wrapped around a form tag, and only one such occurence exists
     var form = document.getElementsByTagName("FORM")[0];
     var inputFields = [];
     for (var i = 0; i < form.length; i++)
