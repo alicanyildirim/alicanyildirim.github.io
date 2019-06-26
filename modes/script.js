@@ -42,16 +42,16 @@ recognition.onresult = function(event) {
                 //add a function to detect the input type so that operation to be performed could be selected
                 inputFields[focusedField].focus();
                 inputFields[focusedField].value = command;
-                modes.textContent += "  Hello   ";
                 focusedField++;
-                // need to erase the command, otherwise it fills the other field too.
+
                 focused = 1;
 
             }
-            else if (command === 'next field' || command === 'previous field')
+            // if the next field, previous field, or clear field commands are called this block will run
+            else if (command === 'next field' || command === 'previous field' || command === 'clear field')
             {
+                // need this focused flag because it enters the above block two times otherwise.
                 focused = 0;
-
                 {
                     if(command === 'next field')
                     {
@@ -70,6 +70,10 @@ recognition.onresult = function(event) {
                             inputFields[focusedField].focus();
                         }
 
+                    }
+                    else if(command === 'clear field')
+                    {
+                        inputFields[focusedField].value = "";
                     }
                 }
                 //setFocus(inputFields,focusedField,command);
