@@ -49,7 +49,7 @@ recognition.onresult = function(event) {
 
                 switch(inputFields[focusedField].type) {
                     case 'radio':
-                        if(word[0] === 'select')
+                        if(words[0] === 'select')
                         {
                             //assuming one word value
                             // if the voice input given for the choice matches the value of the
@@ -57,7 +57,7 @@ recognition.onresult = function(event) {
                             // do we need to clear this one?
                             for ( let i = 0; i < inputFields.length; i++)
                             {
-                                if ( word[1] === inputFields[i].value)
+                                if ( words[1] === inputFields[i].value)
                                 {
                                     modes.textContent = inputFields[i].value;
                                     inputFields[i].checked = true;
@@ -66,7 +66,7 @@ recognition.onresult = function(event) {
                         }
                         break;
                     case 'checkbox':
-                        if(word[0] === 'select')
+                        if(words[0] === 'select')
                         {
                             //assuming one word value
                             // if the voice input given for the choice matches the value of the
@@ -74,13 +74,13 @@ recognition.onresult = function(event) {
                             // do we need to clear this one?
                             for ( let i = 0; i < inputFields.length; i++)
                             {
-                                if ( word[1] === inputFields[i].value)
+                                if ( words[1] === inputFields[i].value)
                                 {
                                     inputFields[i].checked = true;
                                 }
                             }
                         }
-                        else if(word[0] === 'deselect')
+                        else if(words[0] === 'deselect')
                         {
                             //assuming one word value
                             // if the voice input given for the choice matches the value of the
@@ -88,7 +88,7 @@ recognition.onresult = function(event) {
                             // do we need to clear this one?
                             for ( let i = 0; i < inputFields.length; i++)
                             {
-                                if ( word[1] === inputFields[i].value)
+                                if ( words[1] === inputFields[i].value)
                                 {
                                     inputFields[i].checked = false;
                                 }
