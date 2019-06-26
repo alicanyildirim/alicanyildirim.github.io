@@ -43,6 +43,8 @@ recognition.onresult = function(event) {
                 inputFields[focusedField].focus();
                 inputFields[focusedField].value = command;
                 focusedField++;
+                // need to erase the command, otherwise it fills the other field too.
+                command = "";
 
             }
             else if (command === 'next field' || command === 'previous field')
