@@ -40,7 +40,6 @@ recognition.onresult = function(event) {
             if (command !== 'next field' && command !== 'previous field')
             {
                 //add a function to detect the input type so that operation to be performed could be selected
-                inputFields[focusedField].focus();
                 inputFields[focusedField].value = command;
                 focusedField++;
                 // need to erase the command, otherwise it fills the other field too.
