@@ -37,7 +37,9 @@ recognition.onresult = function(event) {
         // if user is in the input mode
         if(isModeNavigation === 0)
         {
-            if ( focused === 0 && command !== 'next field' && command !== 'previous field' && command !== 'clearfield')
+            // well will I write every single command here ?!
+            if ( focused === 0 && command !== 'next field' &&  command !== 'previous field'
+                && command !== 'clearfield' && command !== 'refresh' )
             {
                 //add a function to detect the input type so that operation to be performed could be selected
                 inputFields[focusedField].focus();
