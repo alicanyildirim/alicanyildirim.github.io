@@ -43,7 +43,6 @@ recognition.onresult = function(event) {
                 inputFields[focusedField].focus();
                 inputFields[focusedField].value = command;
                 focusedField++;
-
                 focused = 1;
 
                 switch(inputFields[focusedField].type) {
@@ -128,6 +127,10 @@ recognition.onresult = function(event) {
                     }
                 }
                 //setFocus(inputFields,focusedField,command);
+            }
+            else if ( command === 'refresh' )
+            {
+                location.reload();
             }
 
         }
