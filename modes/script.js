@@ -40,6 +40,7 @@ recognition.onresult = function(event) {
             if (focusedField === 0 && (command !== 'next field' || command !== 'previous field'))
             {
                 inputFields[0].focus();
+                modes.textContent = "In the intial focus";
             }
             else if (command === 'next field' || command === 'previous field')
             {
@@ -90,6 +91,10 @@ recognition.onresult = function(event) {
             else if(command === 'previous') {
                 document.querySelector('.previous').click();
             }
+        }
+        else
+        {
+            modes.textContent = "neither navigation nor input";
         }
 
     }
