@@ -37,28 +37,24 @@ recognition.onresult = function(event) {
         // if user is in the input mode
         if(isModeNavigation === 0)
         {
-            if (focusedField === 0 && (command !== 'next field' || command !== 'previous field'))
+            if (command !== 'next field' || command !== 'previous field')
             {
-                inputFields[0].focus();
-                modes.textContent = "In the intial focus";
+                //add a function to detect the input type so that operation to be performed could be selected
+                inputFields[focusedField].focus();
+                inputFields[focusedField.id].value = command;
+                focusedField++;
+
             }
             else if (command === 'next field' || command === 'previous field')
             {
 
-
-                modes.textContent = "Why are you not running?";
-                //inputFields[1].focus();
                 {
                     if(command === 'next field')
                     {
-                        modes.textContent = "Inside Upper";
                         if(!(inputFields.length === focusedField+1))
                         {
-                            modes.textContent = "Inside IF";
                             focusedField++;
-                            window.setTimeout(() => {
-                                    document.getElementById(inputFields[focusedField].id).focus();
-                            }, 0);
+                            inputFields[focusedField].focus();
                         }
 
                     }
@@ -67,18 +63,12 @@ recognition.onresult = function(event) {
                         if(focusedField !== 0)
                         {
                             focusedField--;
-                            window.setTimeout(() => {
-                                    inputFields[focusedField].focus();
-                            }, 0);
+                            inputFields[focusedField].focus();
                         }
 
                     }
                 }
                 //setFocus(inputFields,focusedField,command);
-            }
-            else
-            {
-                modes.textContent = "You gonna do me like that?!";
             }
 
         }
@@ -91,10 +81,6 @@ recognition.onresult = function(event) {
             else if(command === 'previous') {
                 document.querySelector('.previous').click();
             }
-        }
-        else
-        {
-            modes.textContent = "neither navigation nor input";
         }
 
     }
