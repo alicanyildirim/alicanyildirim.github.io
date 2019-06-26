@@ -5,13 +5,14 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var grammar = '#JSGF V1.0;'
 var recognition = new SpeechRecognition();
 var speechRecognitionList = new SpeechGrammarList();
-var isModeNavigation = 0;
 speechRecognitionList.addFromString(grammar, 1);
 recognition.grammars = speechRecognitionList;
 recognition.lang = 'en-US';
 recognition.continuous = true;
 recognition.interimResults = false;
+var isModeNavigation = 0;
 var focusedField = 0;
+var focused = 0;
 console.log(focusedField);
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
@@ -36,7 +37,7 @@ recognition.onresult = function(event) {
         // if user is in the input mode
         if(isModeNavigation === 0)
         {
-            if (command !== 'next field' && command !== 'previous field')
+            if ( focused === 0 && command !== 'next field' && command !== 'previous field')
             {
                 //add a function to detect the input type so that operation to be performed could be selected
                 inputFields[focusedField].focus();
@@ -44,12 +45,12 @@ recognition.onresult = function(event) {
                 modes.textContent += "  Hello   ";
                 focusedField++;
                 // need to erase the command, otherwise it fills the other field too.
-                command = "";
-                recognition.start();
+                focused = 1;
 
             }
             else if (command === 'next field' || command === 'previous field')
             {
+                focused = 0;
 
                 {
                     if(command === 'next field')
