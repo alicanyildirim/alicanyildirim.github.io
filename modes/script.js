@@ -41,7 +41,7 @@ recognition.onresult = function(event) {
             {
                 //add a function to detect the input type so that operation to be performed could be selected
                 inputFields[focusedField].focus();
-                inputFields[focusedField.id].value = command;
+                inputFields[focusedField].value = command;
                 focusedField++;
 
             }
