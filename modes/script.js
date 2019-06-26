@@ -21,7 +21,6 @@ recognition.onresult = function(event) {
     var words = command.match(/("[^"]+"|[^"\s]+)/g);
     message.textContent = 'Voice Input: ' + command + '.';
     var inputFields = getInputFields();
-    console.log("Hello "+focusedField);
     if (command === 'enter navigation mode')
     {
         isModeNavigation = 1;
@@ -40,11 +39,13 @@ recognition.onresult = function(event) {
             if (command !== 'next field' && command !== 'previous field')
             {
                 //add a function to detect the input type so that operation to be performed could be selected
+                inputFields[focusedField].focus();
                 inputFields[focusedField].value = command;
                 modes.textContent += "  Hello   ";
                 focusedField++;
                 // need to erase the command, otherwise it fills the other field too.
                 command = "";
+                recognition.start();
 
             }
             else if (command === 'next field' || command === 'previous field')
