@@ -41,7 +41,7 @@ recognition.onresult = function(event) {
             {
                 //add a function to detect the input type so that operation to be performed could be selected
                 inputFields[focusedField].value = command;
-i               modes.textContent += "  Hello   ";
+                modes.textContent += "  Hello   ";
                 focusedField++;
                 // need to erase the command, otherwise it fills the other field too.
                 command = "";
