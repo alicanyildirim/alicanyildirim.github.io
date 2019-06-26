@@ -40,11 +40,64 @@ recognition.onresult = function(event) {
             if ( focused === 0 && command !== 'next field' && command !== 'previous field')
             {
                 //add a function to detect the input type so that operation to be performed could be selected
-                inputFields[focusedField].focus();
-                inputFields[focusedField].value = command;
                 focusedField++;
 
                 focused = 1;
+
+                switch(inputFields[focusedField].type) {
+                    case 'radio':
+                        if(word[0] === 'select')
+                        {
+                            //assuming one word value
+                            // if the voice input given for the choice matches the value of the
+                            // radio button select it.
+                            // do we need to clear this one?
+                            for ( let i = 0; i < inputFields.length; i++)
+                            {
+                                if ( word[1] === inputFields[i].value)
+                                {
+                                    inputFields[i].checked = true;
+                                }
+                            }
+                        }
+                        break;
+                    case 'checkbox':
+                        if(word[0] === 'select')
+                        {
+                            //assuming one word value
+                            // if the voice input given for the choice matches the value of the
+                            // radio button select it.
+                            // do we need to clear this one?
+                            for ( let i = 0; i < inputFields.length; i++)
+                            {
+                                if ( word[1] === inputFields[i].value)
+                                {
+                                    inputFields[i].checked = true;
+                                }
+                            }
+                        }
+                        else if(word[0] === 'deselect')
+                        {
+                            //assuming one word value
+                            // if the voice input given for the choice matches the value of the
+                            // radio button select it.
+                            // do we need to clear this one?
+                            for ( let i = 0; i < inputFields.length; i++)
+                            {
+                                if ( word[1] === inputFields[i].value)
+                                {
+                                    inputFields[i].checked = false;
+                                }
+                            }
+                        }
+                        break;
+                    case 'text':
+                        inputFields[focusedField].focus();
+                        inputFields[focusedField].value = command;
+                        break;
+                    default:
+                }
+
 
             }
             // if the next field, previous field, or clear field commands are called this block will run
