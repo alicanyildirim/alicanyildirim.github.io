@@ -22,12 +22,12 @@ recognition.onresult = function(event) {
     var words = command.match(/("[^"]+"|[^"\s]+)/g);
     message.textContent = 'Voice Input: ' + command + '.';
     var inputFields = getInputFields();
-    if (command === 'enter navigation mode')
+    if (command === 'switch to navigation mode')
     {
         isModeNavigation = 1;
         modes.textContent = "Navigation Mode";
     }
-    else if (command === 'enter input mode')
+    else if (command === 'switch to input mode')
     {
         isModeNavigation = 0;
         modes.textContent = "Input Mode";
