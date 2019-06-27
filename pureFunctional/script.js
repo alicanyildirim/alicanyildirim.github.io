@@ -1,5 +1,7 @@
+
+
+
 var message = document.querySelector('#message');
-var confidence = document.querySelector('#confidence');
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var grammar = '#JSGF V1.0;'

@@ -1,5 +1,5 @@
 var message = document.querySelector('#message');
-var confidence = document.querySelector('#confidence');
+var wer = document.querySelector('#wer');
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var grammar = '#JSGF V1.0;'
@@ -20,6 +20,7 @@ recognition.onresult = function(event) {
     command = command.toLowerCase();
     //extracting words
     var words = command.match(/("[^"]+"|[^"\s]+)/g);
+    wer.textContent = 'ASD:  ' + words[0] + " this " + words[1];
     message.textContent = 'Voice Input: ' + command + '.';
     var inputFields = getInputFields();
     if (command === 'switch to navigation mode')
