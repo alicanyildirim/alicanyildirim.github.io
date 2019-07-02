@@ -96,4 +96,15 @@ recognition.onresult = function(event) {
 
 }
 
+recognition.onspeechend = function() {
+    recognition.start();
+};
+recognition.onerror = function(event) {
+    message.textContent = 'Error occurred in recognition: ' + event.error;
+}
+recognition.onend = () => recognition.start();
 
+
+window.onload = (event) => {
+    recognition.start();
+};
