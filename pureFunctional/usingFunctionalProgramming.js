@@ -48,7 +48,8 @@ recognition.onresult = function(event) {
     // mode == 1 => navigation mode
 
     //const inputTypes = ["text","radio","checkbox", "dropdown"];
-    function getInputFields()
+
+    /*function getInputFields()
     {
         //assuming the form is wrapped around a form tag, and only one such occurence exists
         const form = document.getElementsByTagName("FORM")[0];
@@ -59,7 +60,7 @@ recognition.onresult = function(event) {
            inputFields.push(form[i]);
         }
         return inputFields;
-    }
+    }*/
 
     const isInputModeCommand =  R.includes(input,changeMode);
     if(isInputModeCommand)
