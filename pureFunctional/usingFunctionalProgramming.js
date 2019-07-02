@@ -17,6 +17,8 @@ recognition.interimResults = false;
 //indicate the starting mode.
 var mode = 0;
 
+const getMode = R.slice(2,4,toWords(changeMode[0]));
+const concatWords = list => list[0] + " " + list[1];
 
 
 var focusedField = 0;
@@ -66,8 +68,6 @@ recognition.onresult = function(event) {
     {
         mode = R.findIndex(R.equals(input))(changeMode);
         //indicate the mode change
-        const getMode = R.slice(2,4,toWords(changeMode[0]));
-        const concatWords = list => list[0] + " " + list[1];
         modes.textContent = concatWords(getMode);
     }
     // if the input is not mode command
