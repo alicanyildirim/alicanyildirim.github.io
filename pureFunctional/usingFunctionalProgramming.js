@@ -1,6 +1,5 @@
 const R = require('ramda');
 
-
 var message = document.querySelector('#message');
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
@@ -67,7 +66,9 @@ recognition.onresult = function(event) {
     {
         mode = R.findIndex(R.equals(input))(changeMode);
         //indicate the mode change
-        modes.textContent = R.slice(2,4,toWords(changeMode[mode]));
+        const getMode = R.slice(2,4,toWords(changeMode[0]));
+        const concatWords = list => list[0] + " " + list[1];
+        modes.textContent = concatWords(getMode);
     }
     // if the input is not mode command
     else
