@@ -76,7 +76,7 @@ recognition.onresult = function(event) {
     // if the input is not mode command
     else
     {
-        slicedInput = toWords(input);
+        //slicedInput = toWords(input);
         // input mode operations
         if(mode == 0)
         {
