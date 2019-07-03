@@ -12,7 +12,13 @@ recognition.lang = 'en-US';
 recognition.continuous = true;
 recognition.interimResults = false;
 
-//this are my cursed global variables.
+const changeMode = ["switch to input mode","switch to navigation mode"];
+const generalCommands = ["refresh"];
+const navigationCommands = ["next","previous"];
+const inputCommands = ["next field","previous field","clearfield"];
+const inputTypes = ["text","radio","checkbox", "dropdown"];
+
+
 
 //indicate the starting mode.
 var mode = 0;
@@ -20,19 +26,14 @@ var mode = 0;
 const toWords = x => x.match(/("[^"]+"|[^"\s]+)/g);
 const getMode = R.slice(2,4,toWords(changeMode[mode]));
 const concatWords = list => list[0] + " " + list[1];
-
 modes.textContent = concatWords(getMode);
 
 
+//this are my cursed global variables.
 var focusedField = 0;
 var focused = 0;
 
 
-const changeMode = ["switch to input mode","switch to navigation mode"];
-const generalCommands = ["refresh"];
-const navigationCommands = ["next","previous"];
-const inputCommands = ["next field","previous field","clearfield"];
-const inputTypes = ["text","radio","checkbox", "dropdown"];
 
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
