@@ -12005,8 +12005,10 @@ recognition.interimResults = false;
 //indicate the starting mode.
 var mode = 0;
 
-const getMode = R.slice(2,4,toWords(changeMode[0]));
+const getMode = R.slice(2,4,toWords(changeMode[mode]));
 const concatWords = list => list[0] + " " + list[1];
+
+modes.textContent = concatWords(getMode);
 
 
 var focusedField = 0;
@@ -12058,6 +12060,7 @@ recognition.onresult = function(event) {
         //indicate the mode change
         modes.textContent = concatWords(getMode);
     }
+
     // if the input is not mode command
     else
     {
