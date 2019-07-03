@@ -17,6 +17,7 @@ recognition.interimResults = false;
 //indicate the starting mode.
 var mode = 0;
 
+const toWords = x => x.match(/("[^"]+"|[^"\s]+)/g);
 const getMode = R.slice(2,4,toWords(changeMode[mode]));
 const concatWords = list => list[0] + " " + list[1];
 
@@ -38,7 +39,6 @@ recognition.onresult = function(event) {
     var input = event.results[last][0].transcript;
     input = input.toLowerCase();
     //extracting words
-    const toWords = x => x.match(/("[^"]+"|[^"\s]+)/g);
 
     message.textContent = 'Voice Input: ' + input + '.';
 
