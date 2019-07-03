@@ -23,10 +23,7 @@ const inputTypes = ["text","radio","checkbox", "dropdown"];
 //indicate the starting mode.
 var mode = 0;
 
-const toWords = x => x.match(/("[^"]+"|[^"\s]+)/g);
-const getMode = mode => R.slice(2,4,toWords(changeMode[mode]));
-const concatWords = list => list[0] + " " + list[1];
-modes.textContent = concatWords(getMode(mode));
+modes.textContent = "input mode";
 
 
 //this are my cursed global variables.
@@ -71,6 +68,9 @@ recognition.onresult = function(event) {
     {
         mode = R.findIndex(R.equals(input))(changeMode);
         //indicate the mode change
+        const toWords = x => x.match(/("[^"]+"|[^"\s]+)/g);
+        const getMode = mode => R.slice(2,4,toWords(changeMode[mode]));
+        const concatWords = list => list[0] + " " + list[1];
         modes.textContent = concatWords(getMode(mode));
     }
 
