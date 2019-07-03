@@ -23,7 +23,7 @@ const inputTypes = ["text","radio","checkbox", "dropdown"];
 //indicate the starting mode.
 var mode = 0;
 
-const toWords = x => x.match(/("[^"]+"|[^"\s]+)/g);
+var toWords = x => x.match(/("[^"]+"|[^"\s]+)/g);
 const getMode = R.slice(2,4,toWords(changeMode[mode]));
 const concatWords = list => list[0] + " " + list[1];
 modes.textContent = concatWords(getMode);
