@@ -23,6 +23,8 @@ const inputTypes = ["text","radio","checkbox", "dropdown"];
 //indicate the starting mode.
 var mode = 0;
 
+//this is so hecky I want to cry
+//added the functions getMode, concatWords here but it did not update the mode.
 modes.textContent = "input mode";
 
 
