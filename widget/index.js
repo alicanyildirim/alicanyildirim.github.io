@@ -22,7 +22,14 @@ const commands = ["refresh","next","previous","submit","clear"];
 
 
 var message = document.querySelector('#header_1');
-var focusedField = 0;
+
+var focusedField    = 0;
+var focusedQuestion = 0;
+
+//initiliaze the highlighted question. the first question is highlighted first.
+
+
+
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var input = event.results[last][0].transcript;
@@ -40,6 +47,32 @@ recognition.onresult = function(event) {
         || textFields[textFields.length-1].id == document.activeElement.id && input == 'next');
     }
 
+    function questionOnEdge(questions) {
+    return (focusedQuestion == 0 && input == 'previous question'
+        || focusedQuestion == questions.length-1 && input == 'next question');
+    }
+    //navigate between questions. take command (next q,previous q) as input and change the bg color of the highlighted question to orange. If the highlighted element does not change do not change the color.
+
+    function changeQuestion(command,questions)
+    {
+        if(!questionOnEdge(questions))
+        {
+            if(input == 'next question')
+            {
+                questions[focusedQuestion].style.backgroundColor = "";
+                focusedQuestion++;
+                questions[focusedQuestion].style.backgroundColor = "orange";
+
+            }
+            else if(input == 'previous question')
+            {
+                questions[focusedQuestion].style.backgroundColor = "";
+                focusedQuestion++;
+                questions[focusedQuestion].style.backgroundColor = "orange";
+            }
+        }
+    }
+
     function checkFocusedID(textFields)
     {
         for (let i = 0; i < textFields.length; i++)
@@ -53,7 +86,45 @@ recognition.onresult = function(event) {
         return false;
     }
 
-    const textFields = document.querySelectorAll('input[type=text]');
+    function selectRadio(fields)
+    {
+        for(let i = 0; i < fields.length; i++)
+        {
+            const radioValue = fields[i].value.toLowerCase();
+            if(input == 'select ' + radioValue)
+            {
+                fields[i].checked = true;
+            }
+        }
+
+    }
+
+    function deselectRadio(fields)
+    {
+        for(let i = 0; i < fields.length; i++)
+        {
+            const radioValue = fields[i].value.toLowerCase();
+            if(input == 'select ' + radioValue)
+            {
+                fields[i].checked = false;
+            }
+        }
+
+    }
+    const words = input.match(/("[^"]+"|[^"\s]+)/g);
+    // TODO should input field go the the next input field once it is filled? that sounds better since it would make the navigation a bit easier.
+
+    // may need to deal with the other form elements that have the same input types.
+    // TODO use the list element the form element is wrapped around using the data-type and id in conjuction.
+    // hold the active form element in store and enable users the navigate smoothly.
+
+    //list will hold the form elements, need to deal with other form elements by their data-types
+    //may be an error coul be thrown if the highlighted question does not support the operation given.
+    const list           = document.getElementsByTagName("LI");
+    const textFields     = document.querySelectorAll('input[type = text]');
+    const radioFields    = document.querySelectorAll('input[type = radio]');
+    const checkboxFields = document.querySelectorAll('input[type = checkbox]');
+
     if(input == 'next' || input == 'previous')
     {
 
@@ -64,7 +135,7 @@ recognition.onresult = function(event) {
         }
 
 
-        if(!fieldOnEdge(textFields))
+        if(!fieldOnEdge(input,textFields))
         {
             if(input == 'next')
             {
@@ -87,6 +158,14 @@ recognition.onresult = function(event) {
             focusedField = 0;
         }
         textFields[focusedField].value = "";
+    }
+    else if(words[0] == 'select')
+    {
+        selectRadio(radioFields);
+    }
+    else if(words[0] == 'deselect')
+    {
+        deselectRadio(radioFields);
     }
     else
     {
