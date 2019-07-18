@@ -30,6 +30,22 @@ var focusedQuestion = 0;
 
 
 
+// think next as tab and prev as shift tab
+
+// array.from makes it an array. we want that.
+const list = Array.from(document.getElementsByTagName("LI"));
+const questions = list.filter(question => question.getAttribute('data-type') )
+
+
+const textFields     = document.querySelectorAll('input[type = text]');
+const radioFields    = document.querySelectorAll('input[type = radio]');
+const checkboxFields = document.querySelectorAll('input[type = checkbox]');
+
+
+// TODO filter this list.
+list[focusedQuestion].style.backgroundColor = "orange";
+
+
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
     var input = event.results[last][0].transcript;
@@ -43,13 +59,13 @@ recognition.onresult = function(event) {
     }
 
     function fieldOnEdge(textFields) {
-    return (textFields[0].id == document.activeElement.id && input == 'previous'
-        || textFields[textFields.length-1].id == document.activeElement.id && input == 'next');
+        return (textFields[0].id == document.activeElement.id && input == 'previous'
+            || textFields[textFields.length-1].id == document.activeElement.id && input == 'next');
     }
 
     function questionOnEdge(questions) {
-    return (focusedQuestion == 0 && input == 'previous question'
-        || focusedQuestion == questions.length-1 && input == 'next question');
+        return (focusedQuestion == 0 && input == 'previous question'
+            || focusedQuestion == questions.length-1 && input == 'next question');
     }
     //navigate between questions. take command (next q,previous q) as input and change the bg color of the highlighted question to orange. If the highlighted element does not change do not change the color.
 
@@ -67,7 +83,7 @@ recognition.onresult = function(event) {
             else if(input == 'previous question')
             {
                 questions[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion++;
+                focusedQuestion--;
                 questions[focusedQuestion].style.backgroundColor = "orange";
             }
         }
@@ -120,10 +136,6 @@ recognition.onresult = function(event) {
 
     //list will hold the form elements, need to deal with other form elements by their data-types
     //may be an error coul be thrown if the highlighted question does not support the operation given.
-    const list           = document.getElementsByTagName("LI");
-    const textFields     = document.querySelectorAll('input[type = text]');
-    const radioFields    = document.querySelectorAll('input[type = radio]');
-    const checkboxFields = document.querySelectorAll('input[type = checkbox]');
 
     if(input == 'next' || input == 'previous')
     {
@@ -176,6 +188,14 @@ recognition.onresult = function(event) {
         }
 
         textFields[focusedField].value = input;
+
+        //after the input is entered move forward if you can.
+
+        if(focusedField !== textFields.length-1)
+        {
+                focusedField++;
+                textFields[focusedField].focus();
+        }
     }
 }
 
