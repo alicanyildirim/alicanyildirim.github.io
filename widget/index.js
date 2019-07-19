@@ -20,21 +20,129 @@ const inputTypes = ["text","radio","checkbox", "dropdown"];
 const commands = ["refresh","next","previous","submit","clear"];
 
 
+// array.from makes it an array. we want that.
+const list = Array.from(document.getElementsByTagName("LI"));
 
+// filter the list to get only related form elements that are inside list tag.
+const questionsList = list.filter(question => question.getAttribute('data-type') != 'control_head'
+    && question.getAttribute('data-type') != 'control_button'
+    && question.getAttribute('data-type') != 'control_widget');
+
+
+// get the input fields from the questionsList
+// i can get the input fields in a question by Array.from(q[1].getElementsByTagName("input"));
+//
+
+const controlButton = list.filter(question => question.getAttribute('data-type') == 'control_button');
 var message = document.querySelector('#header_1');
 
 var focusedField    = 0;
 var focusedQuestion = 0;
 
+
+
+/*
+    *
+    *
+    *
+    *
+*/
+
+
+function fieldOnEdge(input,textFields) {
+    return (textFields[0].id == document.activeElement.id && input == 'previous'
+        || textFields[textFields.length-1].id == document.activeElement.id && input == 'next');
+}
+
+function questionOnEdge(input,questions) {
+    return (focusedQuestion == 0 && input == 'previous question'
+        || focusedQuestion == questions.length-1 && input == 'next question');
+}
+
+// will be invoked if voice input is next question or previous question.
+function changeQuestion(input,questions)
+{
+    if(!questionOnEdge(input,questions))
+    {
+        if(input == 'next question')
+        {
+            questions[focusedQuestion].style.backgroundColor = "";
+            focusedQuestion++;
+            questions[focusedQuestion].style.backgroundColor = "orange";
+        }
+        else if(input == 'previous question')
+        {
+            questions[focusedQuestion].style.backgroundColor = "";
+            focusedQuestion--;
+            questions[focusedQuestion].style.backgroundColor = "orange";
+        }
+    }
+    return focusedQuestion;
+}
+
+
+function checkFocusedID(textFields)
+{
+    for (let i = 0; i < textFields.length; i++)
+    {
+        if(document.activeElement.id == textFields[i].id)
+        {
+            focusedField = i;
+            return true;
+        }
+    }
+    return false;
+}
+
+function selectRadio(input,fields)
+{
+    for(let i = 0; i < fields.length; i++)
+    {
+        const radioValue = fields[i].value.toLowerCase();
+        if(input == 'select ' + radioValue)
+        {
+            fields[i].checked = true;
+        }
+    }
+
+}
+
+function deselectRadio(input,fields)
+{
+    for(let i = 0; i < fields.length; i++)
+    {
+        const radioValue = fields[i].value.toLowerCase();
+        if(input == 'select ' + radioValue)
+        {
+            fields[i].checked = false;
+        }
+    }
+
+}
+
+
+
+
+/*
+    *
+    *
+    *
+    *
+*/
+
+
+
 //initiliaze the highlighted question. the first question is highlighted first.
+questionsList[focusedQuestion].style.backgroundColor = "orange";
 
 
 
 // think next as tab and prev as shift tab
 
-// array.from makes it an array. we want that.
-const list = Array.from(document.getElementsByTagName("LI"));
-const questions = list.filter(question => question.getAttribute('data-type') )
+
+
+//get the type of the focused question, get the voice input and make action.
+
 
 
 const textFields     = document.querySelectorAll('input[type = text]');
@@ -42,8 +150,6 @@ const radioFields    = document.querySelectorAll('input[type = radio]');
 const checkboxFields = document.querySelectorAll('input[type = checkbox]');
 
 
-// TODO filter this list.
-list[focusedQuestion].style.backgroundColor = "orange";
 
 
 recognition.onresult = function(event) {
@@ -58,75 +164,6 @@ recognition.onresult = function(event) {
         document.getElementById("input_5").click();
     }
 
-    function fieldOnEdge(textFields) {
-        return (textFields[0].id == document.activeElement.id && input == 'previous'
-            || textFields[textFields.length-1].id == document.activeElement.id && input == 'next');
-    }
-
-    function questionOnEdge(questions) {
-        return (focusedQuestion == 0 && input == 'previous question'
-            || focusedQuestion == questions.length-1 && input == 'next question');
-    }
-    //navigate between questions. take command (next q,previous q) as input and change the bg color of the highlighted question to orange. If the highlighted element does not change do not change the color.
-
-    function changeQuestion(command,questions)
-    {
-        if(!questionOnEdge(questions))
-        {
-            if(input == 'next question')
-            {
-                questions[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion++;
-                questions[focusedQuestion].style.backgroundColor = "orange";
-
-            }
-            else if(input == 'previous question')
-            {
-                questions[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion--;
-                questions[focusedQuestion].style.backgroundColor = "orange";
-            }
-        }
-    }
-
-    function checkFocusedID(textFields)
-    {
-        for (let i = 0; i < textFields.length; i++)
-        {
-            if(document.activeElement.id == textFields[i].id)
-            {
-                focusedField = i;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function selectRadio(fields)
-    {
-        for(let i = 0; i < fields.length; i++)
-        {
-            const radioValue = fields[i].value.toLowerCase();
-            if(input == 'select ' + radioValue)
-            {
-                fields[i].checked = true;
-            }
-        }
-
-    }
-
-    function deselectRadio(fields)
-    {
-        for(let i = 0; i < fields.length; i++)
-        {
-            const radioValue = fields[i].value.toLowerCase();
-            if(input == 'select ' + radioValue)
-            {
-                fields[i].checked = false;
-            }
-        }
-
-    }
     const words = input.match(/("[^"]+"|[^"\s]+)/g);
     // TODO should input field go the the next input field once it is filled? that sounds better since it would make the navigation a bit easier.
 
@@ -207,6 +244,5 @@ recognition.onend = () => recognition.start();
 
 
 window.onload = (event) => recognition.start();
-
 
 
