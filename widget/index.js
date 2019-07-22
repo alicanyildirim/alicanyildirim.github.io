@@ -57,30 +57,6 @@ function fieldOnEdge(input,textFields) {
         || textFields[textFields.length-1].id == document.activeElement.id && input == 'next');
 }
 
-function questionOnEdge(input,questions) {
-    return (focusedQuestion == 0 && input == 'previous question'
-        || focusedQuestion == questions.length-1 && input == 'next question');
-}
-
-// will be invoked if voice input is next question or previous question.
-function changeQuestion(input,questions)
-{
-    if(!questionOnEdge(input,questions))
-    {
-        if(input == 'next question')
-        {
-            questions[focusedQuestion].style.backgroundColor = "";
-            focusedQuestion++;
-            questions[focusedQuestion].style.backgroundColor = "orange";
-        }
-        else if(input == 'previous question')
-        {
-            questions[focusedQuestion].style.backgroundColor = "";
-            focusedQuestion--;
-            questions[focusedQuestion].style.backgroundColor = "orange";
-        }
-    }
-}
 
 
 function checkFocusedID(textFields)
@@ -243,6 +219,30 @@ recognition.onresult = function(event) {
     }
     */
 
+    function questionOnEdge(input,questions) {
+        return (focusedQuestion == 0 && input == 'previous question'
+            || focusedQuestion == questions.length-1 && input == 'next question');
+    }
+
+    // will be invoked if voice input is next question or previous question.
+    function changeQuestion(input,questions)
+    {
+        if(!questionOnEdge(input,questions))
+        {
+            if(input == 'next question')
+            {
+                questions[focusedQuestion].style.backgroundColor = "";
+                focusedQuestion++;
+                questions[focusedQuestion].style.backgroundColor = "orange";
+            }
+            else if(input == 'previous question')
+            {
+                questions[focusedQuestion].style.backgroundColor = "";
+                focusedQuestion--;
+                questions[focusedQuestion].style.backgroundColor = "orange";
+            }
+        }
+    }
 
 }
 
