@@ -122,7 +122,6 @@ function deselectRadio(input,fields)
 
 
 
-
 /*
     *
     *
@@ -145,7 +144,6 @@ questionsList[focusedQuestion].style.backgroundColor = "orange";
 
 
 
-const textFields     = document.querySelectorAll('input[type = text]');
 const radioFields    = document.querySelectorAll('input[type = radio]');
 const checkboxFields = document.querySelectorAll('input[type = checkbox]');
 
@@ -162,6 +160,7 @@ recognition.onresult = function(event) {
     if(input == 'submit')
     {
         document.getElementById("input_5").click();
+        alert("Form submitted.");
     }
 
     const words = input.match(/("[^"]+"|[^"\s]+)/g);
@@ -174,6 +173,15 @@ recognition.onresult = function(event) {
     //list will hold the form elements, need to deal with other form elements by their data-types
     //may be an error coul be thrown if the highlighted question does not support the operation given.
 
+
+    // get the type of the form elements that are inside the current question.
+    // if the first input field has a text field type, take that form element as one.
+
+
+    //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
+
+    const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
+/*
     if(input == 'next' || input == 'previous')
     {
 
@@ -182,8 +190,6 @@ recognition.onresult = function(event) {
             textFields[0].focus();
             focusedField = 0;
         }
-
-
         if(!fieldOnEdge(input,textFields))
         {
             if(input == 'next')
@@ -199,7 +205,8 @@ recognition.onresult = function(event) {
             }
         }
     }
-    else if(input == 'clear')
+
+    if(input == 'clear')
     {
         if(checkFocusedID(textFields) == false)
         {
@@ -234,6 +241,9 @@ recognition.onresult = function(event) {
                 textFields[focusedField].focus();
         }
     }
+    */
+
+    changeQuestion(input,questionsList);
 }
 
 recognition.onspeechend = () => recognition.start();
