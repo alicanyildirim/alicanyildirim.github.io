@@ -248,7 +248,6 @@ recognition.onresult = function(event) {
 
 }
 
-recognition.onspeechend = () => recognition.start();
 
 recognition.onerror = (event) => message.textContent = 'Error occurred in recognition: ' + event.error;
 
