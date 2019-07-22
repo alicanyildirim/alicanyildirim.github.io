@@ -243,7 +243,7 @@ recognition.onresult = function(event) {
     }
     */
 
-    changeQuestion(input,questionsList);
+    focusedQuestion = changeQuestion(input,questionsList);
 }
 
 recognition.onspeechend = () => recognition.start();
