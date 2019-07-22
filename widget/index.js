@@ -142,7 +142,6 @@ recognition.onresult = function(event) {
     const words = input.match(/("[^"]+"|[^"\s]+)/g);
     // TODO should input field go the the next input field once it is filled? that sounds better since it would make the navigation a bit easier.
 
-    number.textContent = "Before: " + focusedQuestion;
     // may need to deal with the other form elements that have the same input types.
     // TODO use the list element the form element is wrapped around using the data-type and id in conjuction.
     // hold the active form element in store and enable users the navigate smoothly.
@@ -156,11 +155,11 @@ recognition.onresult = function(event) {
 
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
 
+    number.textContent = "Before: " focusedQuestion;
     if(input == 'next' || input == 'previous')
     {
         changeQuestion(input,questionsList);
-        number.textContent = focusedQuestion;
-
+        number.textContent = "After: " focusedQuestion;
     }
    // const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
@@ -252,11 +251,13 @@ recognition.onresult = function(event) {
 
 }
 
+recognition.onspeechend = () => recognition.start();
 
 recognition.onerror = (event) => message.textContent = 'Error occurred in recognition: ' + event.error;
 
 recognition.onend = () => recognition.start();
 
 
+window.onload = (event) => recognition.start();
 
 
