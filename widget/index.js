@@ -166,14 +166,12 @@ recognition.onresult = function(event) {
             {
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion++;
-                focusedQuestion = focusedQuestion % 2;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
             }
             else if(input == 'previous question')
             {
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion--;
-                focusedQuestion = focusedQuestion % 2;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
             }
         }
