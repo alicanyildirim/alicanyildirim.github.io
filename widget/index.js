@@ -160,7 +160,21 @@ recognition.onresult = function(event) {
 
     if(input == 'next question' || input == 'previous question')
     {
-        changeQuestion(input,questionsList);
+        if(!questionOnEdge(input,questions))
+        {
+            if(input == 'next question')
+            {
+                questions[focusedQuestion].style.backgroundColor = "";
+                focusedQuestion++;
+                questions[focusedQuestion].style.backgroundColor = "orange";
+            }
+            else if(input == 'previous question')
+            {
+                questions[focusedQuestion].style.backgroundColor = "";
+                focusedQuestion--;
+                questions[focusedQuestion].style.backgroundColor = "orange";
+            }
+        }
         number.textContent = "After: " + focusedQuestion;
     }
    // const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
@@ -231,25 +245,6 @@ recognition.onresult = function(event) {
             || focusedQuestion == questions.length-1 && input == 'next question');
     }
 
-    // will be invoked if voice input is next question or previous question.
-    function changeQuestion(input,questions)
-    {
-        if(!questionOnEdge(input,questions))
-        {
-            if(input == 'next question')
-            {
-                questions[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion++;
-                questions[focusedQuestion].style.backgroundColor = "orange";
-            }
-            else if(input == 'previous question')
-            {
-                questions[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion--;
-                questions[focusedQuestion].style.backgroundColor = "orange";
-            }
-        }
-    }
 
 }
 
