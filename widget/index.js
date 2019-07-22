@@ -245,7 +245,6 @@ recognition.onresult = function(event) {
             || focusedQuestion == questions.length-1 && input == 'next question');
     }
 
-
 }
 
 
