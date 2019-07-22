@@ -179,7 +179,7 @@ recognition.onresult = function(event) {
 
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
 
-    focusedQuestion = changeQuestion(input,questionsList);
+    changeQuestion(input,questionsList);
 
     const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
