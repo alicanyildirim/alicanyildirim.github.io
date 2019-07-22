@@ -77,7 +77,6 @@ function changeQuestion(input,questions)
             questions[focusedQuestion].style.backgroundColor = "orange";
         }
     }
-    return focusedQuestion;
 }
 
 
@@ -179,8 +178,7 @@ recognition.onresult = function(event) {
 
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
 
-    if(input == 'next question' || input == 'previous question')
-        changeQuestion(input,questionsList);
+    changeQuestion(input,questionsList);
 
     const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
