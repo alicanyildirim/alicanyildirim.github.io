@@ -55,7 +55,7 @@ questionsList[focusedQuestion].style.backgroundColor = "orange";
 
 function fieldOnEdge(input,textFields) {
     return (textFields[0].id == document.activeElement.id && input == 'previous'
-        || textFields[textFields.length-1].id == document.activeElement.id && input == 'next');
+        || textFields[textFields.length-2].id == document.activeElement.id && input == 'next');
 }
 
 
@@ -164,6 +164,7 @@ recognition.onresult = function(event) {
         {
             if(input == 'next question')
             {
+                console.log("ljdfkljskljdfs")
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion++;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
