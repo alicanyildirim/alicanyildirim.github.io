@@ -155,11 +155,11 @@ recognition.onresult = function(event) {
 
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
 
-    number.textContent = "Before: " focusedQuestion;
+    number.textContent = "Before: " +  focusedQuestion;
     if(input == 'next' || input == 'previous')
     {
         changeQuestion(input,questionsList);
-        number.textContent = "After: " focusedQuestion;
+        number.textContent = "After: " + focusedQuestion;
     }
    // const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
