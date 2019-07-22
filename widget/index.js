@@ -156,6 +156,8 @@ recognition.onresult = function(event) {
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
 
     number.textContent = "Before: " +  focusedQuestion;
+
+
     if(input == 'next question' || input == 'previous question')
     {
         changeQuestion(input,questionsList);
