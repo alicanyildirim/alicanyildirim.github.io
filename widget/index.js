@@ -35,6 +35,7 @@ const questionsList = list.filter(question => question.getAttribute('data-type')
 
 const controlButton = list.filter(question => question.getAttribute('data-type') == 'control_button');
 var message = document.querySelector('#header_1');
+var number = document.querySelector('#number');
 
 var focusedField    = 0;
 var focusedQuestion = 0;
@@ -141,6 +142,7 @@ recognition.onresult = function(event) {
     const words = input.match(/("[^"]+"|[^"\s]+)/g);
     // TODO should input field go the the next input field once it is filled? that sounds better since it would make the navigation a bit easier.
 
+    number.textContent = "Before: " + focusedQuestion;
     // may need to deal with the other form elements that have the same input types.
     // TODO use the list element the form element is wrapped around using the data-type and id in conjuction.
     // hold the active form element in store and enable users the navigate smoothly.
@@ -154,8 +156,12 @@ recognition.onresult = function(event) {
 
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
 
-    changeQuestion(input,questionsList);
+    if(input == 'next' || input == 'previous')
+    {
+        changeQuestion(input,questionsList);
+        number.textContent = focusedQuestion;
 
+    }
    // const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
     if(input == 'next' || input == 'previous')
