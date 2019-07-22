@@ -160,19 +160,19 @@ recognition.onresult = function(event) {
 
     if(input == 'next question' || input == 'previous question')
     {
-        if(!questionOnEdge(input,questions))
+        if(!questionOnEdge(input,questionsList))
         {
             if(input == 'next question')
             {
-                questions[focusedQuestion].style.backgroundColor = "";
+                questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion++;
-                questions[focusedQuestion].style.backgroundColor = "orange";
+                questionsList[focusedQuestion].style.backgroundColor = "orange";
             }
             else if(input == 'previous question')
             {
-                questions[focusedQuestion].style.backgroundColor = "";
+                questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion--;
-                questions[focusedQuestion].style.backgroundColor = "orange";
+                questionsList[focusedQuestion].style.backgroundColor = "orange";
             }
         }
         number.textContent = "After: " + focusedQuestion;
