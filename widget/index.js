@@ -38,6 +38,9 @@ var message = document.querySelector('#header_1');
 
 var focusedField    = 0;
 var focusedQuestion = 0;
+//initiliaze the highlighted question. the first question is highlighted first.
+questionsList[focusedQuestion].style.backgroundColor = "orange";
+
 
 
 
@@ -130,9 +133,6 @@ function deselectRadio(input,fields)
 
 
 
-//initiliaze the highlighted question. the first question is highlighted first.
-questionsList[focusedQuestion].style.backgroundColor = "orange";
-
 
 
 // think next as tab and prev as shift tab
@@ -180,7 +180,7 @@ recognition.onresult = function(event) {
 
     changeQuestion(input,questionsList);
 
-    const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
+   // const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
     if(input == 'next' || input == 'previous')
     {
