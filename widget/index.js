@@ -252,6 +252,5 @@ recognition.onerror = (event) => message.textContent = 'Error occurred in recogn
 recognition.onend = () => recognition.start();
 
 
-window.onload = (event) => recognition.start();
 
 
