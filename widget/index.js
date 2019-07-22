@@ -177,8 +177,9 @@ recognition.onresult = function(event) {
     // get the type of the form elements that are inside the current question.
     // if the first input field has a text field type, take that form element as one.
 
-
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
+
+    focusedQuestion = changeQuestion(input,questionsList);
 
     const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
@@ -244,7 +245,6 @@ recognition.onresult = function(event) {
     */
 
 
-    changeQuestion(input,questionsList);
 }
 
 recognition.onspeechend = () => recognition.start();
