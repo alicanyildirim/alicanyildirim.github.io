@@ -179,7 +179,8 @@ recognition.onresult = function(event) {
 
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
 
-    changeQuestion(input,questionsList);
+    if(input == 'next question' || input == 'previous question')
+        changeQuestion(input,questionsList);
 
     const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
