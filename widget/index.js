@@ -167,7 +167,7 @@ recognition.onresult = function(event) {
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion++;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
-                recognition.start();
+                recognition.end();
 
             }
             else if(input == 'previous question')
@@ -175,7 +175,7 @@ recognition.onresult = function(event) {
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion--;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
-                recognition.start();
+                recognition.end();
             }
         }
         number.textContent = "After: " + focusedQuestion;
