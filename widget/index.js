@@ -122,7 +122,7 @@ function deselectRadio(input,fields)
 const radioFields    = document.querySelectorAll('input[type = radio]');
 const checkboxFields = document.querySelectorAll('input[type = checkbox]');
 
-
+var flag = 0;
 
 
 recognition.onresult = function(event) {
@@ -155,29 +155,30 @@ recognition.onresult = function(event) {
     //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
 
     number.textContent = "Before: " +  focusedQuestion;
-
-
-    if(input == 'next question' || input == 'previous question')
+    flag = 0;
+    if(flag==0)
     {
-        if(!questionOnEdge(input,questionsList))
+        if(input == 'next question' || input == 'previous question')
         {
-            if(input == 'next question')
+            if(!questionOnEdge(input,questionsList))
             {
-                console.log("ljdfkljskljdfs")
-                questionsList[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion++;
-                questionsList[focusedQuestion].style.backgroundColor = "orange";
-                recognition.stop();
+                if(input == 'next question')
+                {
+                    console.log("ljdfkljskljdfs")
+                    questionsList[focusedQuestion].style.backgroundColor = "";
+                    focusedQuestion++;
+                    questionsList[focusedQuestion].style.backgroundColor = "orange";
+                }
+                else if(input == 'previous question')
+                {
+                    questionsList[focusedQuestion].style.backgroundColor = "";
+                    focusedQuestion--;
+                    questionsList[focusedQuestion].style.backgroundColor = "orange";
+                }
             }
-            else if(input == 'previous question')
-            {
-                questionsList[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion--;
-                questionsList[focusedQuestion].style.backgroundColor = "orange";
-                recognition.stop();
-            }
+            number.textContent = "After: " + focusedQuestion;
+            flag = 1;
         }
-        number.textContent = "After: " + focusedQuestion;
     }
    // const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
 /*
