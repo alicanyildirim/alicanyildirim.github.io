@@ -167,15 +167,14 @@ recognition.onresult = function(event) {
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion++;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
-                recognition.end();
-
+                recognition.stop();
             }
             else if(input == 'previous question')
             {
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion--;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
-                recognition.end();
+                recognition.stop();
             }
         }
         number.textContent = "After: " + focusedQuestion;
