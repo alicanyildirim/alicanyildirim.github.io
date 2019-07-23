@@ -31,7 +31,6 @@ const questionsList = list.filter(question => question.getAttribute('data-type')
 
 // get the input fields from the questionsList
 // i can get the input fields in a question by Array.from(q[1].getElementsByTagName("input"));
-//
 
 const controlButton = list.filter(question => question.getAttribute('data-type') == 'control_button');
 var message = document.querySelector('#header_1');
@@ -168,12 +167,15 @@ recognition.onresult = function(event) {
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion++;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
+                recognition.start();
+
             }
             else if(input == 'previous question')
             {
                 questionsList[focusedQuestion].style.backgroundColor = "";
                 focusedQuestion--;
                 questionsList[focusedQuestion].style.backgroundColor = "orange";
+                recognition.start();
             }
         }
         number.textContent = "After: " + focusedQuestion;
