@@ -125,7 +125,7 @@ recognition.onresult = function(event) {
         submit.click();
     }
 
-    const words = input.match(/("[^"]+"|[^"\s]+)/g);
+    var words = input.match(/("[^"]+"|[^"\s]+)/g);
 
 
     if(input == 'next' || input == 'previous')
@@ -170,7 +170,25 @@ recognition.onresult = function(event) {
     }
     else if(document.activeElement.type == "email")
     {
-        document.activeElement.value = (input.replace("at","@")).replace(/\s/g, "");
+        if(input == "clear")
+        {
+            document.activeElement.value = "";
+        }
+        else
+        {
+            document.activeElement.value = (input.replace("at","@")).replace(/\s/g, "");
+        }
+    }
+    else if (document.activeElement.type == "textarea")
+    {
+        if(input == "clear")
+        {
+            document.activeElement.value = "";
+        }
+        else
+        {
+            document.activeElement.type == input;
+        }
     }
     else
     {
