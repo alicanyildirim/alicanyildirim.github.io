@@ -139,7 +139,7 @@ recognition.onresult = function(event) {
             name[0].focus();
             focusedField = 0;
         }
-        if(!fieldOnEdge(input,name))
+        else if(!fieldOnEdge(input,name))
         {
             if(input == 'next')
             {
@@ -170,6 +170,10 @@ recognition.onresult = function(event) {
     else if(words[0] == 'deselect')
     {
         deselectRadio(radioFields);
+    }
+    else if(document.activeElement.type == "email")
+    {
+        document.activeElement.type = (input.replace("at","@")).replace(/\s/g, "");
     }
     else
     {
