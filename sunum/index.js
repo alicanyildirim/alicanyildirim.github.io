@@ -185,11 +185,6 @@ recognition.onresult = function(event) {
 
         //after the input is entered move forward if you can.
 
-        if(focusedField !== name.length-1)
-        {
-                focusedField++;
-                name[focusedField].focus();
-        }
     }
 
 }
