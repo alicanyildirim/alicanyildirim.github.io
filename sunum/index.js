@@ -154,8 +154,7 @@ recognition.onresult = function(event) {
             }
         }
     }
-
-    if(input == 'clear')
+    else if(input == 'clear')
     {
         if(checkFocusedID(name) == false)
         {
