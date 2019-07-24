@@ -33,7 +33,9 @@ const questionsList = list.filter(question => question.getAttribute('data-type')
 // i can get the input fields in a question by Array.from(q[1].getElementsByTagName("input"));
 
 const controlButton = list.filter(question => question.getAttribute('data-type') == 'control_button');
-var message = document.querySelector('#header_1');
+const submit = document.querySelector('button[type = submit]');
+
+var message = document.querySelector('#message');
 var number = document.querySelector('#number');
 
 var focusedField    = 0;
@@ -108,16 +110,7 @@ function deselectRadio(input,fields)
 */
 
 
-
-
-
-// think next as tab and prev as shift tab
-
-
-
-//get the type of the focused question, get the voice input and make action.
-
-
+const name = Array.from(questionsList[2].getElementsByTagName("INPUT"))
 
 const radioFields    = document.querySelectorAll('input[type = radio]');
 const checkboxFields = document.querySelectorAll('input[type = checkbox]');
@@ -133,82 +126,44 @@ recognition.onresult = function(event) {
     // using the tag name get the id and name of the all the input fields
     if(input == 'submit')
     {
-        document.getElementById("input_5").click();
-        alert("Form submitted.");
+        submit.click();
     }
 
     const words = input.match(/("[^"]+"|[^"\s]+)/g);
-    // TODO should input field go the the next input field once it is filled? that sounds better since it would make the navigation a bit easier.
-
-    // may need to deal with the other form elements that have the same input types.
-    // TODO use the list element the form element is wrapped around using the data-type and id in conjuction.
-    // hold the active form element in store and enable users the navigate smoothly.
-
-    //list will hold the form elements, need to deal with other form elements by their data-types
-    //may be an error coul be thrown if the highlighted question does not support the operation given.
 
 
-    // get the type of the form elements that are inside the current question.
-    // if the first input field has a text field type, take that form element as one.
-
-    //questionsList[currentQuestion].getElementsByTagName("INPUT")[0].type == "text"
-
-    number.textContent = "Before: " +  focusedQuestion;
-    if(input == 'next question' || input == 'previous question')
-    {
-        if(!questionOnEdge(input,questionsList))
-        {
-            if(input == 'next question')
-            {
-                console.log("ljdfkljskljdfs")
-                questionsList[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion++;
-                questionsList[focusedQuestion].style.backgroundColor = "orange";
-            }
-            else if(input == 'previous question')
-            {
-                questionsList[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion--;
-                questionsList[focusedQuestion].style.backgroundColor = "orange";
-            }
-        }
-        number.textContent = "After: " + focusedQuestion;
-    }
-
-   // const textFields = Array.from(questionsList[currentQuestion].getElementsByTagName("INPUT"))
-/*
     if(input == 'next' || input == 'previous')
     {
 
-        if(checkFocusedID(textFields) == false)
+        if(checkFocusedID(name) == false)
         {
-            textFields[0].focus();
+            name[0].focus();
             focusedField = 0;
         }
-        if(!fieldOnEdge(input,textFields))
+        if(!fieldOnEdge(input,name))
         {
             if(input == 'next')
             {
                 focusedField++;
-                textFields[focusedField].focus();
+                name[focusedField].focus();
 
             }
             else if(input == 'previous')
             {
                 focusedField--;
-                textFields[focusedField].focus();
+                name[focusedField].focus();
             }
         }
     }
 
     if(input == 'clear')
     {
-        if(checkFocusedID(textFields) == false)
+        if(checkFocusedID(name) == false)
         {
-            textFields[0].focus();
+            name[0].focus();
             focusedField = 0;
         }
-        textFields[focusedField].value = "";
+        name[focusedField].value = "";
     }
     else if(words[0] == 'select')
     {
@@ -220,6 +175,7 @@ recognition.onresult = function(event) {
     }
     else
     {
+        // text field will be filled
         if(checkFocusedID(textFields) == false)
         {
             textFields[0].focus();
@@ -248,9 +204,6 @@ recognition.onresult = function(event) {
 
 recognition.onerror = (event) => message.textContent = 'Error occurred in recognition: ' + event.error;
 
-
-document.body.onclick = function() {
-  recognition.start();
-  console.log('Ready to receive a color command.');
-}
+recognition.onend = () => recognition.start();
+window.onload = (event) => recognition.start();
 
