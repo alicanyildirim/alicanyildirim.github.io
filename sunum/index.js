@@ -12,7 +12,6 @@ recognition.continuous = true;
 recognition.interimResults = false;
 
 //indicate the starting mode, which is input mode.
-var mode = 0;
 
 
 const inputTypes = ["text","radio","checkbox", "dropdown"];
@@ -37,7 +36,6 @@ const submit = document.querySelector('button[type = submit]');
 
 var message = document.querySelector('#message');
 document.getElementById("message").style.color = "lightblue";
-var number = document.querySelector('#number');
 
 var focusedField    = 0;
 var focusedQuestion = 0;
@@ -78,7 +76,7 @@ function selectRadio(input,fields)
     for(let i = 0; i < fields.length; i++)
     {
         const radioValue = fields[i].value.toLowerCase();
-        if(input == 'select ' + radioValue)
+        if(input.slice(7) == radioValue)
         {
             fields[i].checked = true;
         }
@@ -91,7 +89,7 @@ function deselectRadio(input,fields)
     for(let i = 0; i < fields.length; i++)
     {
         const radioValue = fields[i].value.toLowerCase();
-        if(input == 'select ' + radioValue)
+        if(input.slice(7) == radioValue)
         {
             fields[i].checked = false;
         }
@@ -109,8 +107,7 @@ function deselectRadio(input,fields)
 */
 
 
-const name = Array.from(questionsList[2].getElementsByTagName("INPUT"))
-
+const name = document.querySelectorAll('input[type = text]');
 const radioFields    = document.querySelectorAll('input[type = radio]');
 const checkboxFields = document.querySelectorAll('input[type = checkbox]');
 
@@ -173,7 +170,7 @@ recognition.onresult = function(event) {
     }
     else if(document.activeElement.type == "email")
     {
-        document.activeElement.type = (input.replace("at","@")).replace(/\s/g, "");
+        document.activeElement.value = (input.replace("at","@")).replace(/\s/g, "");
     }
     else
     {
