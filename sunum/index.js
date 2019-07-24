@@ -192,7 +192,7 @@ recognition.onresult = function(event) {
                 textFields[focusedField].focus();
         }
     }
-    */
+
 
     function questionOnEdge(input,questions) {
         return (focusedQuestion == 0 && input == 'previous question'
@@ -204,6 +204,7 @@ recognition.onresult = function(event) {
 
 recognition.onerror = (event) => message.textContent = 'Error occurred in recognition: ' + event.error;
 
-recognition.onend = () => recognition.start();
+recognition.onspeechend = () => recognition.start();
 window.onload = (event) => recognition.start();
+recognition.onend = () => recognition.start();
 
