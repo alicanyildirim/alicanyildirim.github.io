@@ -253,9 +253,8 @@ recognition.onresult = function(event) {
 
 recognition.onerror = (event) => message.textContent = 'Error occurred in recognition: ' + event.error;
 
+recognition.onend = () => recognition.start();
 
-document.body.onclick = function() {
-  recognition.start();
-  console.log('Ready to receive a color command.');
-}
+window.onload = (event) => recognition.start();
+
 
