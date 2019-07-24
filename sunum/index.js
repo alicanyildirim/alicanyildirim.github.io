@@ -36,12 +36,11 @@ const controlButton = list.filter(question => question.getAttribute('data-type')
 const submit = document.querySelector('button[type = submit]');
 
 var message = document.querySelector('#message');
+document.getElementById("message").style.color = "lightblue";
 var number = document.querySelector('#number');
 
 var focusedField    = 0;
 var focusedQuestion = 0;
-//initiliaze the highlighted question. the first question is highlighted first.
-questionsList[focusedQuestion].style.backgroundColor = "orange";
 
 
 
@@ -176,27 +175,21 @@ recognition.onresult = function(event) {
     else
     {
         // text field will be filled
-        if(checkFocusedID(textFields) == false)
+        if(checkFocusedID(name) == false)
         {
-            textFields[0].focus();
+            name[0].focus();
             focusedField = 0;
         }
 
-        textFields[focusedField].value = input;
+        name[focusedField].value = input;
 
         //after the input is entered move forward if you can.
 
-        if(focusedField !== textFields.length-1)
+        if(focusedField !== name.length-1)
         {
                 focusedField++;
-                textFields[focusedField].focus();
+                name[focusedField].focus();
         }
-    }
-
-
-    function questionOnEdge(input,questions) {
-        return (focusedQuestion == 0 && input == 'previous question'
-            || focusedQuestion == questions.length-1 && input == 'next question');
     }
 
 }
