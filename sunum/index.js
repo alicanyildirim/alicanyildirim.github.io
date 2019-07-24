@@ -73,14 +73,6 @@ function checkFocusedID(textFields)
 
 function selectRadio(input,fields)
 {
-    for(let i = 0; i < fields.length; i++)
-    {
-        const radioValue = fields[i].value.toLowerCase();
-        if(input.slice(7) == radioValue)
-        {
-            fields[i].checked = true;
-        }
-    }
 
 }
 
@@ -151,7 +143,7 @@ recognition.onresult = function(event) {
             }
         }
     }
-    else if(input == 'clear')
+    else if(input == 'clear' && document.activeElement.type == "text")
     {
         if(checkFocusedID(name) == false)
         {
@@ -162,11 +154,11 @@ recognition.onresult = function(event) {
     }
     else if(words[0] == 'select')
     {
-        selectRadio(radioFields);
+        selectRadio(input,radioFields);
     }
     else if(words[0] == 'deselect')
     {
-        deselectRadio(radioFields);
+        deselectRadio(input,radioFields);
     }
     else if(document.activeElement.type == "email")
     {
@@ -187,7 +179,7 @@ recognition.onresult = function(event) {
         }
         else
         {
-            document.activeElement.type == input;
+            document.activeElement.value == input;
         }
     }
     else
