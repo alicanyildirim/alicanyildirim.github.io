@@ -73,6 +73,14 @@ function checkFocusedID(textFields)
 
 function selectRadio(input,fields)
 {
+    for(let i = 0; i < fields.length; i++)
+    {
+        const radioValue = fields[i].value.toLowerCase();
+        if(input.slice(7) == radioValue)
+        {
+            fields[i].checked = true;
+        }
+    }
 
 }
 
@@ -143,15 +151,6 @@ recognition.onresult = function(event) {
             }
         }
     }
-    else if(input == 'clear' && document.activeElement.type == "text")
-    {
-        if(checkFocusedID(name) == false)
-        {
-            name[0].focus();
-            focusedField = 0;
-        }
-        name[focusedField].value = "";
-    }
     else if(words[0] == 'select')
     {
         selectRadio(input,radioFields);
@@ -182,16 +181,29 @@ recognition.onresult = function(event) {
             document.activeElement.value == input;
         }
     }
-    else
+    else if(document.activeElement.type == "text")
     {
         // text field will be filled
-        if(checkFocusedID(name) == false)
+        //
+        if(input == 'clear')
+        {
+            if(checkFocusedID(name) == false)
+            {
+                name[0].focus();
+                focusedField = 0;
+            }
+            name[focusedField].value = "";
+        }
+        else if(checkFocusedID(name) == false)
         {
             name[0].focus();
             focusedField = 0;
+            name[focusedField].value = input;
         }
-
-        name[focusedField].value = input;
+        else
+        {
+            name[focusedField].value = input;
+        }
 
         //after the input is entered move forward if you can.
 
