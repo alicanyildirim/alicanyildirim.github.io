@@ -115,6 +115,7 @@ const checkboxFields = document.querySelectorAll('input[type = checkbox]');
 
 recognition.onresult = function(event) {
     var last = event.results.length - 1;
+    alert("hello");
     var input = event.results[last][0].transcript;
     input = input.toLowerCase();
     //extracting words
