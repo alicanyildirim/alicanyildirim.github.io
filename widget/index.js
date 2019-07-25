@@ -157,3 +157,7 @@ document.body.onclick = function() {
   console.log('Ready to receive a color command.');
 }
 
+recognition.onspeechend = () => recognition.start();
+window.onload = (event) => recognition.start();
+recognition.onend = () => recognition.start();
+
