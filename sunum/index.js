@@ -89,7 +89,7 @@ function deselectRadio(input,fields)
     for(let i = 0; i < fields.length; i++)
     {
         const radioValue = fields[i].value.toLowerCase();
-        if(input.slice(7) == radioValue)
+        if(input.slice(9) == radioValue)
         {
             fields[i].checked = false;
         }
@@ -198,11 +198,11 @@ recognition.onresult = function(event) {
         {
             name[0].focus();
             focusedField = 0;
-            name[focusedField].value = input;
+            name[focusedField].value = input.charAt(0).toUpperCase() + input.slice(1);;
         }
         else
         {
-            name[focusedField].value = input;
+            name[focusedField].value = input.charAt(0).toUpperCase() + input.slice(1);
         }
 
         //after the input is entered move forward if you can.
