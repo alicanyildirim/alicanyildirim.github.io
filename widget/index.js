@@ -125,20 +125,17 @@ recognition.onresult = function(event) {
 
     if(input == 'next question' || input == 'previous question')
     {
-        if(!questionOnEdge(input,questionsList))
+        if(input == 'next question')
         {
-            if(input == 'next question')
-            {
-                questionsList[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion++;
-                questionsList[focusedQuestion].style.backgroundColor = "orange";
-            }
-            else if(input == 'previous question')
-            {
-                questionsList[focusedQuestion].style.backgroundColor = "";
-                focusedQuestion--;
-                questionsList[focusedQuestion].style.backgroundColor = "orange";
-            }
+            questionsList[focusedQuestion].style.backgroundColor = "";
+            focusedQuestion++;
+            questionsList[focusedQuestion].style.backgroundColor = "orange";
+        }
+        else if(input == 'previous question')
+        {
+            questionsList[focusedQuestion].style.backgroundColor = "";
+            focusedQuestion--;
+            questionsList[focusedQuestion].style.backgroundColor = "orange";
         }
     }
 }
