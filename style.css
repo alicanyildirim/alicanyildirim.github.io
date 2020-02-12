@@ -1,15 +1,300 @@
-.button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 14px 28px;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  width: 50%;
-  max-width: 400px;
-  font-size: 16px;
-  margin: auto;
-  cursor: pointer;
+*
+{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
+html, body
+{
+    width : 100%;
+    height: 100%;
+    background-color:  #e6ffe6;
+}
+article
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+nav
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8vh;
+    background: #1F1C2C; 
+}
+.logo 
+{
+    color: rgb(226,226,226);
+    letter-spacing: 5px;
+    font-size: 25px;
+}
+.nav-links
+{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+}
+.nav-links li
+{
+    list-style: none;
+}
+.nav-links a 
+{
+    color: rgb(226,226,226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: medium;
+    font-size: 18px;
+}
+.nav-links a:hover
+{
+    background-color: #493ce7;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.burger
+{
+    display: none;
+    cursor: pointer;
+}
+.burger div
+{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226,226,226);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+main
+{
+    display:flex;
+    min-height: 84vh;
+}
+header, main, footer
+{
+    flex-shrink: 0;
+}
+footer
+{
+    height: 8vh;
+    display:flex;
+    background: #232323;
+    align-items: center;
+    justify-content: center;   
+    bottom: 0;
+}
+footer ul
+{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+}
+.contact
+{
+    margin: 15px 0;
+    bottom: 0px;
+}
+.contact li
+{
+    list-style: none;
+}
+.contact a 
+{
+    color: rgb(226,226,226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 12px;
+}
+@media screen and (max-width:800px)
+{
+    main
+    {
+        width: 100%;
+    }
+    .container
+    {
+        min-height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .right
+    {
+        width:100%;
+    }
+    .expertise
+    {
+        margin-bottom: 35px;
+    }
+    .left
+    {
+        width:100%;
+    }
+    body
+    {
+        overflow-x: hidden;
+    }
+    .nav-links 
+    {
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: #1F1C2C;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+    .nav-links li
+    {
+        opacity: 0;
+    }
+    .nav-links a
+    {
+        font-weight: bold;
+        font-size: 32px;
+    }
+    .burger
+    {
+        display: block;
+    }
+    
+}
+.nav-active
+{
+    transform: translateX(0%);
+}
+@keyframes navLinkFade
+{
+    from 
+    {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to
+    {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.toggle .line1
+{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2
+{
+    opacity: 0;
+}
+.toggle .line3
+{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+
+.container
+{
+    margin: 0 auto;
+    min-width: 80%;
+    display: flex;
+}
+.left
+{
+    min-width: 50%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.left h1,
+.right h1
+{
+    padding: 5%;
+    font-family: 'Finger Paint', cursive;
+}
+.left h2,
+.right h2
+{
+    margin-top: 10px;
+    text-align: center;
+    min-width: 80%;
+    background-color:  #ccffff;
+}
+.left h2,
+.right h2
+{
+    padding-top: 10px; 
+    font-family: 'Finger Paint', cursive;
+}
+.left p,
+.right p
+{
+    width: 80%;
+    text-align: justify;
+    font-size: 18px;
+    font-family: 'Roboto Mono', monospace;
+    padding-bottom:30px;
+}
+.expertise
+{
+    padding: 0px 0px 20px 0px;
+    width: 80%;
+    display:flex;
+    background-color:  #ccffff;
+}
+.symbols
+{
+    font-size: 2.2rem;
+}
+.text
+{
+    font-size: 18px;
+    font-family: 'Roboto Mono', monospace;
+}
+#languages
+{
+    width: 50%;
+    display:inline-block;
+}
+#languages li,
+#technologies li
+{
+    list-style: none;
+}
+#technologies
+{
+    width: 50%;
+    display:inline-block;
+}
+.right
+{
+    min-width: 50%;
+    min-height: 50%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

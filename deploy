@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# This bash script takes a command line argument as a commit message and pushes the changes to github.
-
-browserify pureFunctional/usingFunctionalProgramming.js -o pureFunctional/bundle.js 
-git add .
-git commit -m "$1"
-git push 
