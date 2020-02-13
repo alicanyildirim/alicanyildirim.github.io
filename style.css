@@ -23,14 +23,14 @@ nav
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 8vh;
+    height: 10vh;
     background: #1F1C2C; 
 }
 .logo 
 {
     color: rgb(226,226,226);
     letter-spacing: 5px;
-    font-size: 25px;
+    font-size: 28px;
 }
 .nav-links
 {
@@ -48,13 +48,11 @@ nav
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: medium;
-    font-size: 18px;
+    font-size: 24px;
 }
 .nav-links a:hover
 {
-    background-color: #493ce7;
     font-weight: bold;
-    padding: 10px 20px;
 }
 .burger
 {
@@ -72,44 +70,19 @@ nav
 main
 {
     display:flex;
-    min-height: 84vh;
+    min-height: 76vh;
 }
 header, main, footer
 {
     flex-shrink: 0;
 }
-footer
+.icon
 {
-    min-height: 8vh;
-    display:flex;
-    background: #232323;
-    align-items: center;
-    justify-content: center;   
-    bottom: 0;
+    font-size: 30px;
+    vertical-align: middle;
 }
-footer ul
-{
-    display: flex;
-    justify-content: space-around;
-    width: 60%;
-}
-.contact
-{
-    margin: 15px 0;
-    bottom: 0px;
-}
-.contact li
-{
-    list-style: none;
-}
-.contact a 
-{
-    color: rgb(226,226,226);
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size: 12px;
-}
+
+
 @media screen and (max-width:800px)
 {
     main
