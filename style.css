@@ -2,6 +2,8 @@
 {
     margin: 0px;
     padding: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 html, body
@@ -15,7 +17,6 @@ article
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
 }
 nav
 {
@@ -79,7 +80,7 @@ header, main, footer
 }
 footer
 {
-    height: 8vh;
+    min-height: 8vh;
     display:flex;
     background: #232323;
     align-items: center;
@@ -209,6 +210,7 @@ footer ul
     display:flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .left h1,
 .right h1
@@ -219,10 +221,8 @@ footer ul
 .left h2,
 .right h2
 {
-    margin-top: 10px;
     text-align: center;
     min-width: 80%;
-    background-color:  #ccffff;
 }
 .left h2,
 .right h2
@@ -244,7 +244,6 @@ footer ul
     padding: 0px 0px 20px 0px;
     width: 80%;
     display:flex;
-    background-color:  #ccffff;
 }
 .symbols
 {
