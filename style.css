@@ -186,13 +186,15 @@ header, main, footer
     justify-content: center;
 }
 .left h1,
-.right h1
+.right h1,
+.container h1
 {
     padding: 5%;
     font-family: 'Finger Paint', cursive;
 }
 .left h2,
-.right h2
+.right h2,
+.container h1
 {
     text-align: center;
     min-width: 80%;
@@ -211,6 +213,21 @@ header, main, footer
     font-size: 18px;
     font-family: 'Roboto Mono', monospace;
     padding-bottom:30px;
+}
+.announcement
+{
+    margin: 0 auto;
+    min-width: 80%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Finger Paint', cursive;
+}
+.announcement h1
+{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .expertise
 {
