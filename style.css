@@ -1,289 +1,360 @@
-*
-{
-    margin: 0px;
-    padding: 0px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+* {
+    margin:  0;
+    padding: 0;
 }
-html, body
-{
-    width : 100%;
-    height: 100%;
-    background-color:  #e6ffe6;
-}
-article
-{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-nav
-{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 10vh;
-    background: #1F1C2C; 
-}
-.logo 
-{
-    color: rgb(226,226,226);
-    letter-spacing: 5px;
-    font-size: 28px;
-}
-.nav-links
-{
-    display: flex;
-    justify-content: space-around;
-    width: 60%;
-}
-.nav-links li
-{
-    list-style: none;
-}
-.nav-links a 
-{
-    color: rgb(226,226,226);
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-weight: medium;
-    font-size: 24px;
-}
-.nav-links a:hover
-{
-    font-weight: bold;
-}
-.burger
+#hide
 {
     display: none;
-    cursor: pointer;
 }
-.burger div
-{
-    width: 25px;
-    height: 3px;
-    background-color: rgb(226,226,226);
-    margin: 5px;
-    transition: all 0.3s ease;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7; 
+    height:      100vh;
+    overflow: hidden;
+
 }
-main
+.container {
+    width:  100%;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    /* smooth scroll */
+}
+.navbar {
+    position: fixed;
+    top:      0;
+    left:      0;
+    z-index:  1;
+    display:  flex;
+    align-items: center;
+    overflow-x: hidden;
+    height:    100%;
+    width:   200px;
+    font-size:   20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    /*background: rgba(171, 138, 140,0.85); */
+}
+.navcolor {
+
+}
+.navbar ul {
+    display: block;
+    list-style: none;
+    width: 100%;
+}
+.navbar ul li {
+    margin:  0 0.3rem;
+    padding: 0.7rem;
+    justify-content: center;
+}
+.navbar ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #1a55ad;
+}
+.navbar ul li a:hover {
+    color: #0f0c0c;
+}
+section {
+    box-shadow: inset 0 0 0 1000px rgba(255,255,255,.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    width:100%;
+    height: 100vh;
+    scroll-snap-align: center;
+}
+#logo {
+      filter: sepia(100%);
+        -webkit-filter: sepia(100%);
+          filter: invert(80%);
+            -webkit-filter: invert(80%);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.layer {
+background-color: rgba(248, 247, 216, 0.7);
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.highlight 
 {
+    background-color: #dbcb32;
+}
+section p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:   21px;
+}
+section h1 {
+    margin-top: 15px;
+    padding: 0px 15px;
+    color:       #3b3f45;
+    font-size:   45px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+section#contact h3 {
+    padding: 0px 15px;
+    margin-top: 70px;
+    margin-bottom: 200px;
+    color:       #3b3f45;
+    font-size:   28px;
+}
+
+section .subscript {
+    font-size: 25px;
+    color:     #9da4b0;
+}
+section#home {
+    align-items: center;
+    background: url('images/backgrounds/blured_wander.jpg') no-repeat  center/
+    cover; 
+}
+.center {
+    width: 70%;
+    height: 80%;
+    text-align: center;
+    align-items: center;
+    vertical-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+section#home h3 {
+    margin-top: -50px;
+    text-align: justify;
+    width: 90%;
+    color:       #3b3f45;
+    font-size:   24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.contain {
+    width: 70%;
+    align-items: center;
+    justify-content: space-between;
     display:flex;
-    min-height: 76vh;
+    flex-direction: column;
 }
-header, main, footer
-{
-    flex-shrink: 0;
+.containi {
+    width: 70%;
+    align-items: center;
+    justify-content: space-between;
+    display:flex;
 }
-.icon
-{
-    font-size: 30px;
-    vertical-align: middle;
-}
+#duo {
+    display:flex;
+    flex-direction: row;
 
+}
+#trio {
+    display:flex;
+    flex-direction: row;
 
-@media screen and (max-width:800px)
-{
-    main
-    {
-        width: 100%;
-    }
-    .container
-    {
-        min-height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-    .right
-    {
-        width:100%;
-    }
-    .expertise
-    {
-        margin-bottom: 35px;
-    }
-    .left
-    {
-        width:100%;
-    }
-    body
-    {
-        overflow-x: hidden;
-    }
-    .nav-links 
-    {
-        position: fixed;
-        right: 0px;
-        height: 92vh;
-        top: 8vh;
-        background-color: #1F1C2C;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        transform: translateX(100%);
-        transition: transform 0.5s ease-in;
-    }
-    .nav-links li
-    {
-        opacity: 0;
-    }
-    .nav-links a
-    {
-        font-weight: bold;
-        font-size: 32px;
-    }
-    .burger
-    {
-        display: block;
-    }
+}
+.left {
+
+}
+section#description {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center; 
+    background: url('images/backgrounds/blured_alyssa.jpg') no-repeat  center/
+    cover; 
     
 }
-.nav-active
-{
-    transform: translateX(0%);
+section#features {
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center; 
+    background: url('images/backgrounds/blured_amanda.jpg') no-repeat  center/
+    cover; 
+    
 }
-@keyframes navLinkFade
-{
-    from 
-    {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to
-    {
-        opacity: 1;
-        transform: translateX(0px);
-    }
+section#features h3 {
+    width: 70%;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color:       #3b3f45;
+    font-size:   24px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.toggle .line1
-{
-    transform: rotate(-45deg) translate(-5px,6px);
+section#description h1 {
+    margin-bottom: 40px;
 }
-.toggle .line2
-{
-    opacity: 0;
+section#description h3 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 70%;
+    color:       #3b3f45;
+    font-size:   23px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.toggle .line3
-{
-    transform: rotate(45deg) translate(-5px,-6px);
+section#description img {
+}
+.posterlink, a {
+        text-decoration: none;
+}
+.posterlink a:hover {
+        color: #577ea1;
+}
+section#documents {
+    margin-top:5px;
+    justify-content: flex-start;
+}
+section#members {
+    justify-content: flex-start;
+    background: url('images/backgrounds/blured_member-bg.jpg') no-repeat  center/
+    cover; 
+}
+section#contact {
+    background: url('images/backgrounds/blured_calebs.jpg') no-repeat  center/
+    cover; 
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center; 
+    max-height:100vh;
+
+    
 }
 
-.container
-{
-    margin: 0 auto;
-    min-width: 80%;
-    display: flex;
-}
-.left
-{
-    min-width: 50%;
+.row {
+
+    height: 80%;
     display:flex;
     flex-direction: column;
+    padding: 7em;
+    margin: 0;
+}
+
+.people {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.right{
+}
+.left{
+
+float:left;
+}
+.person {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: .3rem;
+  padding: 0.3rem;
+
+}
+
+.person img {
+  border-radius: 50%;
+  width:  180px;
+  height: 160px;
+  
+}
+.name {
+  font-size: 24px;
+  margin-top: 0;
+  color: #1a1711;
+
+}
+.unvan {
+  font-size: 22px;
+  margin-top: 0;
+  color: #3d2f2f;
+}
+
+.reachout {
+    max-height: 20%;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reachout a
+{
+    color: #121221;
+    text-decoration: none;
+}
+.reachout a:hover
+{
+    color: #1b555c;
+}
+
+#line1,#line2, #cengmail {
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    font-size:   20px;
+}
+#cengmail {
+}
+
+
+.lo{
+
+    
+}
+
+
+
+
+.fa-5x {
+
+    color: #67759c;
+}
+
+
+section#mobile {
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    text-align: center; 
+    background: url('images/backgrounds/blured_lauren.jpg') no-repeat  center/
+    cover; 
+    
 }
-.left h1,
-.right h1,
-.container h1
-{
-    padding: 5%;
-    font-family: 'Finger Paint', cursive;
+section#mobile img {
+     height: 200px; 
+     width: 300px;
+     object-fit: contain;
 }
-.left h2,
-.right h2,
-.container h1
-{
-    text-align: center;
-    min-width: 80%;
+section#mobile h1 {
+    margin-bottom: 15px;
 }
-.left h2,
-.right h2
-{
-    padding-top: 10px; 
-    font-family: 'Finger Paint', cursive;
+section#mobile h3 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 70%;
+    color:       #3b3f45;
+    font-size:   23px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.left p,
-.right p
-{
-    width: 80%;
-    text-align: justify;
-    font-size: 18px;
-    font-family: 'Roboto Mono', monospace;
-    padding-bottom:30px;
-}
-.announcement
-{
-    margin: 0 auto;
-    min-width: 80%;
-    display: flex;
-    justify-content: center;
-    font-family: 'Finger Paint', cursive;
-}
-.announcement h1
-{
 
+section#web h1 {
+    margin-bottom: 15px;
+    margin-top: -40px;
+}
+
+section#web {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-}
-.expertise
-{
-    padding: 0px 0px 20px 0px;
-    width: 80%;
-    display:flex;
-}
-.symbols
-{
-    font-size: 2.2rem;
-}
-.text
-{
-    font-size: 14px;
-    font-family: 'Roboto Mono', monospace;
-}
-#languages
-{
-    width: 50%;
-    display:inline-block;
-}
-#languages li,
-#technologies li
-{
-    list-style: none;
-}
-#technologies
-{
-    width: 50%;
-    display:inline-block;
-}
-.right
-{
-    min-width: 50%;
-    min-height: 50%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: justify;
-    justify-content: center;
+    text-align: center; 
+    background: url('images/backgrounds/blured_keaganw.jpg') no-repeat  center/
+    cover; 
 }
 
 
+#page {
+    width: 65%;
+    height: 90%;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

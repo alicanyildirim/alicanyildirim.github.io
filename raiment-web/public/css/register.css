@@ -1,0 +1,115 @@
+
+body
+{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px&display=swap');
+.btn
+{
+    background-color: #1A443A;
+}
+.btn:hover {
+    background-color: rgb(50, 88, 79);
+  }
+  
+.btn:focus {
+    background-color: rgb(120, 165, 154);
+  }
+.signup-main-section
+{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+.left
+{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.right
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+    min-width: 95%;
+    margin-bottom: 7px;
+}
+.signup-text
+{
+    font-weight: normal;
+    font-size: 40px;
+    margin: 0;
+}
+.signup-text-middle
+{
+    font-size: 72px;
+    margin: 0;
+}
+
+.input-group
+{
+    min-width: 100%;
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+.input-group:last-child
+{
+    margin-bottom: 0;
+}
+label
+{
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+}
+.input-group input
+{
+    min-width: 95%;
+    outline: none;
+    background: none;
+    border: 1px solid #4483C9;
+    font-size: 1em;
+    padding: 0.5em;
+    color: inherit;
+    border-radius: 5px;
+}
+
+.input-group input:focus
+{
+    border-color: #a8b8b8;
+}
+
+@media (max-width: 900px)
+{
+    .signup-main-section
+    {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .signup-form
+    {
+        width: 80vw;
+        max-width: inherit;
+        margin: 2rem 0;
+    }
+}
+.alert {
+    line-height: 40px;
+    margin-top:15px;
+    margin-bottom:15px;
+    text-align:center;
+    font-family: 'Slabo 27px', serif;
+    background: #d95245;
+    font-size: 16px;
+    color: black;
+    border-radius: 5px;
+    vertical-align: center;
+    justify-content: center;
+    padding:2px;
+}
+.alert span {
+}

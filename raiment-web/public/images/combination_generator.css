@@ -1,0 +1,96 @@
+.discover-main-section {
+  max-width: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.title
+{
+    text-align:center;
+    font-family: 'Slabo 27px', serif;
+    color: white;
+
+}
+.items
+{
+    position: relative;
+    margin: 20px auto 0;
+    width: 100%;
+    max-width: 400px;
+}
+.items img
+{
+    
+    display: block;
+    position: relative;
+    width: 100%;
+}
+.items button
+{
+    position:absolute;
+    right: 30%;
+}
+.clothes
+{
+    width 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin: .5rem;
+    padding: .70rem;
+}
+
+.clothes img 
+{
+    padding :10px;
+}
+.icon-section {
+  display: flex;
+}
+.call-to-action
+{
+  margin-top: 50px;
+  width: 1200px;
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: .5rem;
+  padding: .70rem;
+  width: 180px;
+  height: 190px;
+  background-color: #4C5F74;
+  margin-top: 100px;
+
+}
+
+.icon img {
+  width: 125px;
+  height: 150px;
+  
+}
+span
+{
+
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #8A97A5;
+}
+
+
+@media (max-width: 800px) {
+  .discover-main-section {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .discover-main-section .covers-image {
+    margin-top: 2rem; 
+    height: 30vh;
+    width: auto;
+  }
+}
